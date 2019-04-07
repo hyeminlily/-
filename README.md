@@ -1,3 +1,3 @@
 # HYEMINSEO
 
-A Project for Analyzing and Recommending movie tastes
+A Project for analyzing and recommending movie tastes
