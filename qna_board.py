@@ -49,4 +49,4 @@ def delete():
     return render_template('dashboard.html', list=list)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.219.157')
+    app.run(debug=True, host='203.236.209.98')
