@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HYEMINSEO</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+</head>
+<body>
+    <h2>☆★ 알림-판 공지사항 ★☆</h2>
+    <div>
+        <button><a href="insert">글-작성</a></button><br>
+        <table align="center">
+            <thead>
+                <th width="35%">제목</th>
+                <th width="50%">내용</th>
+                <th width="*">액션</th>
+            </thead>
+            <tbody>
+                {% for l in list %}
+                    <tr align="center">
+                        <td>{{l['title'][:20]}}..</td>
+                        <td>{{l['content'][:30]}}..</td>
+                        <td><a href="update?id={{l._id}}">수정</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="delete?id={{l._id}}">삭제</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

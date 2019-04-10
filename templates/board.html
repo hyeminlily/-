@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HYEMINSEO</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/board.css')}}">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(window).scroll(function() {
+                if($(this).scrollTop() > $("#header").height()) {
+                    $("#navbar").addClass("sticky");
+                    $("#dropdown-content").css("top", "0");
+                    $("#btn_top").css("display", "block");
+                }
+                else {
+                    $("#navbar").removeClass("sticky");
+                    $("#dropdown-content").css("top", $("#header").height()-$(this).scrollTop()+60);
+                    $("#btn_top").css("display", "none");
+                }
+            });
+            $(".btn-menu").click(function(){
+                $("#sidebar").css("width", "140px");
+                $("#icon-close").css("display", "block");
+            });
+            $("#icon-close").click(function(){
+                $("#sidebar").css("width", "0");
+            });
+            $("#btn_top").click(function(){
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            });
+            $("#chevron-down").click(function(){
+                $("#chevron-down").css("display", "none");
+                $("#chevron-up").css("display", "block");
+            });
+            $("#chevron-up").click(function(){
+                $("#chevron-up").css("display", "none");
+                $("#chevron-down").css("display", "block");
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div id="header" class="header">
+            <a href="main.jsp"><img src="{{url_for('static', filename='img/logo_finish_2.svg')}}"></a>
+        </div>
+
+        <nav id="navbar" class="navbar">
+            <div class="navbar-logo">
+                <a href="main.jsp"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a>
+            </div>
+            <div class="navbar-list">
+                <a href="main.jsp">누리-집</a>
+                <a href="eval.jsp">취향-분석</a>
+                <div class="dropdown">
+                    <button class="dropbtn">(nickname)&nbsp;&nbsp;<i class="fas fa-sort-amount-down" style="font-size: 16px;"></i></button>
+                    <div id="dropdown-content" class="dropdown-content">
+                        <a href="service.do">정보-고침</a>
+                        <a href="QnA.jsp">알림-판</a>
+                        <a href="#">접속-해지</a>
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar">
+                <form action="/search.jsp" method="POST">
+                    <input type="text" name="search" placeholder="검색">
+                </form>
+            </div>
+        </nav>
+
+        <button class="btn-menu"><i id="icon-menu" class="fas fa-bars"></i></button>
+        <div id="sidebar" class="sidebar">
+            <i id="icon-close" class="fas fa-times"></i>
+            <a href="main.jsp"><i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;누리-집</a>
+            <a href="eval.jsp"><i class="fas fa-heart"></i>&nbsp;&nbsp;&nbsp;취향-분석</a>
+            <a href="service.do"><i class="fas fa-pen"></i>&nbsp;&nbsp;&nbsp;정보-고침</a>
+            <a href="QnA.jsp"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;알림-판</a>
+            <a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;접속-해지</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="main">
+            <h2>알림-판</h2>
+            {% for l in list %}
+                <button class="accordion">{{l.title}}
+                    <i id="chevron-down" class="fas fa-chevron-down" style="font-size: 20px; color: rgb(236, 196, 136); float: right;"></i>
+                    <i id="chevron-up" class="fas fa-chevron-up" style="font-size: 20px; color: rgb(236, 196, 136); float: right; display: none;"></i>
+                </button>
+                <div class="panel"><p>{{l.content}}</p></div>
+            {% endfor %}
+        </div>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    }
+                    else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        </script>
+        <button id="btn_top"><i class="fas fa-arrow-circle-up" style="color: rgba(236, 196, 136, 0.8);"></i></button></i>
+    </main>
+
+    <footer>
+        <div id="footer" class="footer">
+            <ul class="footer-ul">
+                <li class="footer-li"><a href="main.jsp"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a></li>
+                <li class="footer-li">&copy; 철수와 영화 2019</li>
+                <li class="footer-li">慧珉庶 (hyeminseo)</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HYEMINSEO</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/insert.css')}}">
+</head>
+<body>
+    <h2>☆★ 알림-판 공지사항 수정 ★☆</h2>
+    <div>
+        <form action="update" method="post">
+            <h3>제목은</h3>
+            <input type="hidden" name="id" value="{{post_one._id}}">
+            <input type="text" name="title" value="{{post_one.title}}"><br>
+            <h3>내용은</h3>
+            <textarea name="content">{{post_one.content}}</textarea><br><br>
+            <input type="submit" value="수정-쓰!">
+        </form>
+    </div>
+</body>
+</html>
