@@ -365,9 +365,9 @@ input:-ms-input-placeholder {
    display: block;
 }
 .footer-li {
-    padding: 0;
-    line-height: 24px;
-    font-family: 'Noto Sans KR', sans-serif;
+   padding: 0;
+   line-height: 24px;
+   font-family: 'Noto Sans KR', sans-serif;
    font-size: 14px;
    color: #fff;
    display: block;
