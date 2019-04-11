@@ -96,6 +96,58 @@
                 </button>
                 <div class="panel"><p>{{l.content}}</p></div>
             {% endfor %}
+
+            <h2>질문-덩어리</h2>
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'question')">자주 묻는 질문</button>
+                <button class="tablinks" onclick="openTab(event, 'login')">로그인 / 회원가입</button>
+                <button class="tablinks" onclick="openTab(event, 'contents')">컨텐츠 문의</button>
+                <button class="tablinks" onclick="openTab(event, 'service')">서비스 문의</button>
+            </div>
+            <div id="question" class="tabcontent">
+                {% for f in faq %}
+                    {% if f.kinds == 'question' %}
+                        <button class="accordion">{{f.title}}
+                            <i id="chevron-down" class="fas fa-chevron-down" style="font-size: 20px; color: rgb(236, 196, 136); float: right;"></i>
+                            <i id="chevron-up" class="fas fa-chevron-up" style="font-size: 20px; color: rgb(236, 196, 136); float: right; display: none;"></i>
+                        </button>
+                        <div class="panel"><p>{{f.content}}</p></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div id="login" class="tabcontent">
+                {% for f in faq %}
+                    {% if f.kinds == 'login' %}
+                        <button class="accordion">{{f.title}}
+                            <i id="chevron-down" class="fas fa-chevron-down" style="font-size: 20px; color: rgb(236, 196, 136); float: right;"></i>
+                            <i id="chevron-up" class="fas fa-chevron-up" style="font-size: 20px; color: rgb(236, 196, 136); float: right; display: none;"></i>
+                        </button>
+                        <div class="panel"><p>{{f.content}}</p></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div id="contents" class="tabcontent">
+                {% for f in faq %}
+                    {% if f.kinds == 'contents' %}
+                        <button class="accordion">{{f.title}}
+                            <i id="chevron-down" class="fas fa-chevron-down" style="font-size: 20px; color: rgb(236, 196, 136); float: right;"></i>
+                            <i id="chevron-up" class="fas fa-chevron-up" style="font-size: 20px; color: rgb(236, 196, 136); float: right; display: none;"></i>
+                        </button>
+                        <div class="panel"><p>{{f.content}}</p></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div id="service" class="tabcontent">
+                {% for f in faq %}
+                    {% if f.kinds == 'service' %}
+                        <button class="accordion">{{f.title}}
+                            <i id="chevron-down" class="fas fa-chevron-down" style="font-size: 20px; color: rgb(236, 196, 136); float: right;"></i>
+                            <i id="chevron-up" class="fas fa-chevron-up" style="font-size: 20px; color: rgb(236, 196, 136); float: right; display: none;"></i>
+                        </button>
+                        <div class="panel"><p>{{f.content}}</p></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
         <script>
             var acc = document.getElementsByClassName("accordion");
@@ -105,6 +157,7 @@
                 acc[i].addEventListener("click", function() {
                     this.classList.toggle("active");
                     var panel = this.nextElementSibling;
+
                     if (panel.style.display === "block") {
                         panel.style.display = "none";
                     }
@@ -112,6 +165,22 @@
                         panel.style.display = "block";
                     }
                 });
+            }
+            function openTab(evt, kinds) {
+                var i, tabcontent, tablinks;
+
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                document.getElementById(kinds).style.display = "block";
+                evt.currentTarget.className += " active";
             }
         </script>
         <button id="btn_top"><i class="fas fa-arrow-circle-up" style="color: rgba(236, 196, 136, 0.8);"></i></button></i>

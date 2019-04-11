@@ -42,3 +42,46 @@ def delete(id):
     board = db['board']
     board.remove({'_id': id})
     client.close()
+
+def getFaq():
+    client = MongoClient("localhost", 27017)
+    db = client['hyeminseo']
+    faq = db['faq']
+    faqAll = faq.find()
+
+    list = []
+    for f in faqAll:
+        list.append(f)
+    return list
+
+def insertFaq(kinds, title, content, saved_at):
+    client = MongoClient("localhost", 27017)
+    db = client['hyeminseo']
+    faq = db['faq']
+    doc = {'kinds': kinds, 'title': title, 'content': content, 'saved_at': saved_at}
+    faq.insert_one(doc)
+    client.close()
+
+def detailFaq(id):
+    client = MongoClient("localhost", 27017)
+    db = client['hyeminseo']
+    faq = db['faq']
+    post_one = faq.find_one({'_id': id})
+    client.close()
+    return post_one
+
+def updateFaq(id, kinds, title, content, saved_at):
+    client = MongoClient("localhost", 27017)
+    db = client['hyeminseo']
+    faq = db['faq']
+    q = {'_id': id}
+    set = {'$set': {'kinds': kinds, 'title': title, 'content': content, 'saved_at': saved_at}}
+    faq.update_one(q, set)
+    client.close()
+
+def deleteFaq(id):
+    client = MongoClient("localhost", 27017)
+    db = client['hyeminseo']
+    faq = db['faq']
+    faq.remove({'_id': id})
+    client.close()

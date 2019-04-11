@@ -50,6 +50,16 @@ input[type=submit] {
     font-size: 16px;
     font-weight: 700;
 }
+select {
+    width: 20%;
+    height: 60px;
+    border: 2px solid rgba(236, 196, 136, 0.9);
+    background-color: rgb(207, 76, 66);
+    font-family: 'Black Han Sans', 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 550;
+    color: rgb(236, 196, 136);
+}
 
 /* scroll */
 ::-webkit-scrollbar {

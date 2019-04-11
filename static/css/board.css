@@ -283,6 +283,41 @@ input:-ms-input-placeholder {
     text-align: left;
 }
 
+/* main - tab & accordion */
+.tab {
+    width: 70%;
+    left: 15%;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(70, 140, 132);
+}
+.tab button {
+    padding: 15px 18px;
+    background-color: inherit;
+    color: rgb(236, 196, 136);
+    font-family: 'Black Han Sans', 'Noto Sans KR', sans-serif;
+	font-weight: 200;
+    font-size: 18px;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.tab button:hover {
+    background-color: rgb(236, 196, 136);
+    color: rgb(70, 140, 132);
+}
+.tab button.active {
+    background-color: rgb(236, 196, 136);
+    color: rgb(70, 140, 132);
+}
+.tabcontent {
+    padding: 30px;
+    text-align: center;
+    display: none;
+}
+
 /* main - top 버튼 */
 #btn_top {
     padding: 5px;
