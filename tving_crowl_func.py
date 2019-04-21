@@ -29,10 +29,11 @@ def getTitleList():
         text = c.find('a').text
         text = text.replace("[이벤트] ", "")
         text = text.replace(" [자막]", "")
+        text = text.replace("확장판", "")
         title_list.append(text.strip())
 
     # get movie's title from Cinefox
-    for page in range(5):
+    for page in range(2):
         url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
         result = requests.get(url)
         data = BeautifulSoup(result.content, 'html.parser')
