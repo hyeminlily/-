@@ -12,7 +12,7 @@ def getTitleList():
 
     # infinite scroll
     body = driver.find_element_by_tag_name("body")
-    num_of_padedown = 1
+    num_of_padedown = 10000
 
     while num_of_padedown:
         body.send_keys(Keys.PAGE_DOWN)
@@ -33,7 +33,7 @@ def getTitleList():
         title_list.append(text.strip())
 
     # get movie's title from Cinefox
-    for page in range(2):
+    for page in range(234):
         url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
         result = requests.get(url)
         data = BeautifulSoup(result.content, 'html.parser')

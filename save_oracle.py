@@ -1,16 +1,18 @@
 import cx_Oracle as oc
 import os
 import pandas as pd
+import naverMV_crowl
 
-# Oracle Connection
-os.environ["NLS_LANG"] = ".AL32UTF8"
-START_VALUE = u"시작값입니다".encode('cp949')
-END_VALUE = u"종료값입니다".encode('cp949')
+head = ['movie_no', 'movie_title', 'movie_titleEng', 'movie_genre', 'movie_nation', 'movie_runtime', 'movie_grade',
+        'movie_opendate', 'movie_director', 'movie_actor', 'movie_fname', 'movie_play_url', 'movie_content']
+movies = naverMV_crowl.getMovieList()
+df = pd.DataFrame(movies, index=None, columns=head)
+df.to_csv('movie.csv', encoding='utf-8')
 
-conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
-cursor = conn.cursor()
-cursor.execute('select * from member')
-print(cursor.fetchall())
-
-cursor.close()
-conn.close
+# # Oracle Connection
+# conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
+# cursor = conn.cursor()
+# cursor.executemany('insert into movie()')
+# conn.commit()
+# cursor.close()
+# conn.close
