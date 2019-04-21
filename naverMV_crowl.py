@@ -21,12 +21,10 @@ for t in title_list:
         url_mv = 'https://movie.naver.com/movie/bi/mi/basic.nhn?code=' + no
         result_mv = requests.get(url_mv)
         html_mv = BeautifulSoup(result_mv.content, 'html.parser')
-
-        # get title
         info = html_mv.find('div', {'class': "mv_info"})
-        title = info.find('h3', {'class': "h_movie"}).find('a').text
 
-        # get titleEng
+        # get title, titleEng
+        title = info.find('h3', {'class': "h_movie"}).find('a').text
         titleEng = info.find('strong', {'class': "h_movie2"}).text
         titleEng = re.sub('\t|\r|\n', '', titleEng)
         rm_year = re.findall('[0-9][0-9][0-9][0-9]', titleEng)
@@ -38,43 +36,29 @@ for t in title_list:
         dd = info_spec.findAll('dd')
 
         genre = ''
-        if len(dd[0].findAll('span')) == 2:
-            genre_list1 = dd[0].findAll('span')[0]
-            genre_list2 = genre_list1.findAll('a')
-            for g in genre_list2:
-                g = g.text
-                if g == genre_list2[-1]:
-                    genre += g
-                else:
-                    genre += g + ', '
-            nation = dd[0].findAll('span')[1].find('a').text
-            runtime = ''
+        genre_list1 = dd[0].findAll('span')[0]
+        genre_list2 = genre_list1.findAll('a')
+        for g in genre_list2:
+            gt = g.text
+            if g == genre_list2[-1]:
+                genre += gt
+            else:
+                genre += gt + ', '
 
-        if len(dd[0].findAll('span')) == 3:
-            genre_list1 = dd[0].findAll('span')[0]
-            genre_list2 = genre_list1.findAll('a')
-            for g in genre_list2:
-                g = g.text
-                if g == genre_list2[-1]:
-                    genre += g
-                else:
-                    genre += g + ', '
-            nation = dd[0].findAll('span')[1].find('a').text
-            runtime = dd[0].findAll('span')[2].text.strip()
+        nation = ''
+        nation_list1 = dd[0].findAll('span')[1]
+        nation_list2 = genre_list1.findAll('a')
+        for n in nation_list2:
+            nt = n.text
+            if n == nation_list2[-1]:
+                nation += nt
+            else:
+                nation += nt + ', '
+
+        runtime = dd[0].findAll('span')[2].text.strip()
 
         # get opendate
         if len(dd[0].findAll('span')) > 3:
-            genre_list1 = dd[0].findAll('span')[0]
-            genre_list2 = genre_list1.findAll('a')
-            for g in genre_list2:
-                g = g.text
-                if g == genre_list2[-1]:
-                    genre += g
-                else:
-                    genre += g + ', '
-            nation = dd[0].findAll('span')[1].find('a').text
-            runtime = dd[0].findAll('span')[2].text.strip()
-
             year = dd[0].findAll('span')[3].findAll('a')
             split_year1 = str(year).split('>')
             split_year2 = split_year1[1].split('<')[0].strip()
@@ -143,6 +127,4 @@ for t in title_list:
                 else:
                     actor += act + ', '
 
-    print(no)
-    print(len(dd))
     # print(no, ' / ', title, ' / ', titleEng, ' / ', genre, ' / ', nation, ' / ', runtime, ' / ', age, ' / ', director, ' / ', actor, ' / ', opendate, ' / ', content, ' / ', fname, ' / ', play_url)
