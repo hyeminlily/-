@@ -13,6 +13,7 @@ for title in title_list:
     html = BeautifulSoup(result.content, 'html.parser')
     ul = html.find('ul', {'class': "search_list_1"})
     no = ul.find('a')['href'].split("/")[-1].split("=")[-1]
+    play_url = 'https://series.naver.com/tvstore/detail.nhn?mcode=' + no
 
     # get movie basic info
     url_mv = 'https://movie.naver.com/movie/bi/mi/basic.nhn?code=' + no
