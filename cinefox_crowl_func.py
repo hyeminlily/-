@@ -2,7 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 import re
 
-def getTitleList():
+def getMovieList():
+    movies = []
+
     # get movie info from Cinefox
     for page in range(234):
         url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
@@ -13,6 +15,8 @@ def getTitleList():
         no_list = re.findall('<.+?onclick="aram.move(.+?)">', str(div))
 
         for movie_no in no_list:
+            movie = []
+
             # get no
             movie_no = movie_no.split('=')[1]
             movie_no = movie_no.split("\'")[0]
@@ -74,14 +78,38 @@ def getTitleList():
             actor = actor.replace(',', ', ')
             actor = actor.strip()
 
-            print(movie_no)
-            print(title)
-            print(titleEng)
-            print(runtime)
-            print(nation)
-            print(genre)
-            print(opendate)
-            print(grade)
-    # return title_list
+            # get poster image
+            img_src = data_dt.find('img', {'id': "PIMG"})['src']
+            img = requests.get(img_src)
+            fname = movie_no + '.jpg'
+            img_file = 'C:/stsTest/2M_Project/src/main/webapp/resources/poster/' + fname
 
-getTitleList()
+            file = open(img_file, 'wb')
+            file.write(img.content)
+            file.close()
+
+            # get content
+            div_cont = data_dt.find('div', {'id': "content"})
+            content = ''
+            all_p = div_cont.findAll('p')
+            for ap in all_p:
+                ap = ap.text.strip()
+                ap = ap.replace('\u200b', '')
+                content += ap + '<br>'
+            content = content[:4]
+
+            movie.append(movie_no)
+            movie.append(title)
+            movie.append(titleEng)
+            movie.append(genre)
+            movie.append(nation)
+            movie.append(runtime)
+            movie.append(grade)
+            movie.append(opendate)
+            movie.append(director)
+            movie.append(actor)
+            movie.append(fname)
+            movie.append(url_dt)
+            movie.append(content)
+            movies.append(movie)
+    return movies
