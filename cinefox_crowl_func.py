@@ -8,7 +8,7 @@ def getMovieList():
     # get movie info from Cinefox
     for page in range(234):
         url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
-        result = requests.get(url)
+        result = requests.request("GET", url)
         data = BeautifulSoup(result.content, 'html.parser')
 
         div = data.findAll('div', {'class': "postimg"})
@@ -23,7 +23,7 @@ def getMovieList():
 
             # get detail info
             url_dt = 'http://clean.cinefox.com/vod/view?product_seq=' + movie_no
-            result_dt = requests.get(url_dt)
+            result_dt = requests.request("GET", url_dt)
             data_dt = BeautifulSoup(result_dt.content, 'html.parser')
 
             # get title, titleEng
@@ -41,24 +41,37 @@ def getMovieList():
             spec_list = spec_list.replace('<span>', '')
             spec_list = spec_list.replace('</span>', '')
 
+            split = spec_list.split('|')
+
             # get runtime
-            runtime = spec_list.split('|')[0]
+            runtime = ''
+            if len(split) > 0:
+                runtime = split[0]
 
             # get nation
-            nation = spec_list.split('|')[1]
-            nation = nation.replace(',', ', ')
+            nation = ''
+            if len(split) > 1:
+                nation = split[1]
+                nation = nation.replace(',', ', ')
 
             # get genre
-            genre = spec_list.split('|')[2]
-            genre = genre.replace(',', ', ')
+            genre = ''
+            if len(split) > 2:
+                genre = split[2]
+                genre = genre.replace(',', ', ')
 
-            # get opendate
-            opendate = spec_list.split('|')[3]
-            opendate = opendate.replace('개봉 ', '')
-            opendate = opendate.replace('-', '/')
-
-            # get grade
-            grade = spec_list.split('|')[4]
+            # get opendate & grade
+            opendate = ''
+            grade = ''
+            if len(split) > 3 and split[3].split(' ')[0] == '개봉':
+                opendate = split[3]
+                opendate = opendate.replace('개봉 ', '')
+                opendate = opendate.replace('-', '/')
+                grade = split[4]
+                grade = grade.replace('</div>', '')
+            elif len(split) > 3 and split[3].split(' ')[0] != '개봉':
+                grade = split[3]
+                grade = grade.replace('</div>', '')
 
             # get director
             director = str(plp_list).split('<span>')[0]
@@ -80,7 +93,9 @@ def getMovieList():
 
             # get poster image
             img_src = data_dt.find('img', {'id': "PIMG"})['src']
-            img = requests.get(img_src)
+            if img_src == '/Modules/storeFox/_view/skin/prodcutView/w_default_v1/images/ageposter_L.png':
+                img_src = 'http://cinefox.com/Modules/storeFox/_view/skin/prodcutView/w_default_v1/images/ageposter_L.png'
+            img = requests.request("GET", img_src)
             fname = movie_no + '.jpg'
             img_file = 'C:/stsTest/2M_Project/src/main/webapp/resources/poster/' + fname
 
