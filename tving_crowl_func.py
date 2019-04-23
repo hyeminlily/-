@@ -8,15 +8,15 @@ import re
 def getTitleList():
     driver = webdriver.Chrome()
     driver.get("http://www.tving.com/movie/allm")
-    time.sleep(1)
+    time.sleep(10)
 
     # infinite scroll
     body = driver.find_element_by_tag_name("body")
-    num_of_padedown = 10000
+    num_of_padedown = 1000
 
     while num_of_padedown:
         body.send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.2)
+        time.sleep(10)
         num_of_padedown -= 1
 
     # get movie's title from Tving
@@ -27,8 +27,14 @@ def getTitleList():
     title_list = []
     for c in caption:
         text = c.find('a').text
+        text = text.replace("[할인] ", "")
         text = text.replace("[이벤트] ", "")
+        text = text.replace(" [대여상품] ", "")
+        text = text.replace(" [소장상품] ", "")
+        text = text.replace(" [본편&코멘터리] ", "")
+        text = text.replace(" [더빙]", "")
         text = text.replace(" [자막]", "")
+        text = text.replace(" 무삭제", "")
         text = text.replace("확장판", "")
         title_list.append(text.strip())
 
