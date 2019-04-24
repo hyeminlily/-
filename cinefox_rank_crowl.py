@@ -1,5 +1,4 @@
 import cx_Oracle as oc
-import os
 from bs4 import BeautifulSoup
 import requests
 
