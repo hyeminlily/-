@@ -3,9 +3,9 @@ import cx_Oracle as oc
 import os
 import requests
 import re
-import socket
 
-socket.getaddrinfo('203.236.209.108', 8080)
+# import socket
+# socket.getaddrinfo('203.236.209.108', 8080)
 
 # get movie info from Cinefox
 for page in range(234):
@@ -97,14 +97,14 @@ for page in range(234):
         img_src = data_dt.find('img', {'id': "PIMG"})['src']
         if img_src == '/Modules/storeFox/_view/skin/prodcutView/w_default_v1/images/ageposter_L.png':
             img_src = 'http://cinefox.com/Modules/storeFox/_view/skin/prodcutView/w_default_v1/images/ageposter_L.png'
-        img = requests.request('GET', img_src, timeout=5)
-
-        fname = movie_no + '.jpg'
-        img_file = 'C:/stsTest/2M_Project/src/main/webapp/resources/poster/' + fname
-
-        file = open(img_file, 'wb')
-        file.write(img.content)
-        file.close()
+        # img = requests.request('GET', img_src, timeout=5)
+        #
+        # fname = movie_no + '.jpg'
+        # img_file = 'C:/stsTest/2M_Project/src/main/webapp/resources/poster/' + fname
+        #
+        # file = open(img_file, 'wb')
+        # file.write(img.content)
+        # file.close()
 
         # get content
         div_cont = data_dt.find('div', {'id': "content"})
@@ -113,8 +113,6 @@ for page in range(234):
         for ap in all_p:
             ap = ap.text.strip()
             content += ap + '<br>'
-            content = content.replace('\u200b', '')
-            content = content.replace('\xa0', '')
 
         # Oracle Connection - insert
         os.environ["NLS_LANG"] = ".AL32UTF8"
@@ -123,9 +121,9 @@ for page in range(234):
 
         conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
         cursor = conn.cursor()
-        cursor.execute('insert into movie values(:movie_no, :movie_title, :movie_titleEng, :movie_genre, :movie_nation, :movie_runtime, :movie_grade, :movie_opendate, :movie_director, :movie_actor, :movie_fname, :movie_play_url, :movie_content)',
+        cursor.execute('insert into movie values(:movie_no, :movie_title, :movie_titleEng, :movie_genre, :movie_nation, :movie_runtime, :movie_grade, :movie_opendate, :movie_director, :movie_actor, :movie_image_url, :movie_play_url, :movie_content)',
                        movie_no=int(movie_no), movie_title=title, movie_titleEng=titleEng, movie_genre=genre, movie_nation=nation, movie_runtime=runtime,
-                       movie_grade=grade, movie_opendate=opendate, movie_director=director, movie_actor=actor, movie_fname=fname, movie_play_url=url_dt,
+                       movie_grade=grade, movie_opendate=opendate, movie_director=director, movie_actor=actor, movie_image_url=img_src, movie_play_url=url_dt,
                        movie_content=content)
         conn.commit()
         cursor.close()

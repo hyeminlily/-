@@ -90,4 +90,4 @@ def deletefaq():
     return render_template('faqboard.html', list=list)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='203.236.209.98')
+    app.run(debug=True, host='203.236.209.108')
