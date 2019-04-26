@@ -8,7 +8,7 @@ import re
 # socket.getaddrinfo('203.236.209.108', 8080)
 
 # get movie info from Cinefox
-for page in range(310):
+for page in range(311):
     url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
     result = requests.request("GET", url)
     data = BeautifulSoup(result.content, 'html.parser')
@@ -128,3 +128,5 @@ for page in range(310):
         conn.commit()
         cursor.close()
         conn.close
+
+    print(page + 1)
