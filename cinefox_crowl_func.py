@@ -7,6 +7,15 @@ import re
 # import socket
 # socket.getaddrinfo('203.236.209.108', 8080)
 
+# get max page number
+url_list = 'http://cinefox.com/vod/movie/list'
+rq = requests.request("GET", url_list)
+html = BeautifulSoup(rq.content, 'html.parser')
+wrapper = html.find('div', {'class': 'paginate wrapper'})
+li = wrapper.findAll('li')
+page = li[-1].text
+page = int(page.replace('...', ''))
+
 # get movie info from Cinefox
 for page in range(311):
     url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
