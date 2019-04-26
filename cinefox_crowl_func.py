@@ -139,3 +139,4 @@ for page in range(max):
         conn.close
 
     print(page + 1)
+    print(no_list[-1])
