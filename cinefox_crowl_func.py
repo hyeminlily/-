@@ -13,11 +13,11 @@ rq = requests.request("GET", url_list)
 html = BeautifulSoup(rq.content, 'html.parser')
 wrapper = html.find('div', {'class': 'paginate wrapper'})
 li = wrapper.findAll('li')
-page = li[-1].text
-page = int(page.replace('...', ''))
+max = li[-1].text
+max = int(max.replace('...', ''))
 
 # get movie info from Cinefox
-for page in range(311):
+for page in range(max):
     url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
     result = requests.request("GET", url)
     data = BeautifulSoup(result.content, 'html.parser')
