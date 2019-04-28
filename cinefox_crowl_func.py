@@ -4,9 +4,6 @@ import os
 import requests
 import re
 
-# import socket
-# socket.getaddrinfo('203.236.209.108', 8080)
-
 # get max page number
 url_list = 'http://cinefox.com/vod/movie/list'
 rq = requests.request("GET", url_list)
@@ -18,7 +15,8 @@ max = int(max.replace('...', ''))
 
 # get movie info from Cinefox
 for page in range(max):
-    url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
+    url = 'http://clean.cinefox.com/vod/movie/list?page=202'
+          # + str(page + 1)
     result = requests.request("GET", url)
     data = BeautifulSoup(result.content, 'html.parser')
 
@@ -26,8 +24,6 @@ for page in range(max):
     no_list = re.findall('<.+?onclick="aram.move(.+?)">', str(div))
 
     for movie_no in no_list:
-        movie = []
-
         # get no
         movie_no = movie_no.split('=')[1]
         movie_no = movie_no.split("\'")[0]
@@ -107,21 +103,32 @@ for page in range(max):
         if img_src == '/Modules/storeFox/_view/skin/prodcutView/w_default_v1/images/ageposter_L.png':
             img_src = 'http://cinefox.com/Modules/storeFox/_view/skin/prodcutView/w_default_v1/images/ageposter_L.png'
         # img = requests.request('GET', img_src, timeout=5)
-        #
+
         # fname = movie_no + '.jpg'
         # img_file = 'C:/stsTest/2M_Project/src/main/webapp/resources/poster/' + fname
-        #
+
         # file = open(img_file, 'wb')
         # file.write(img.content)
         # file.close()
 
         # get content
-        div_cont = data_dt.find('div', {'id': "content"})
         content = ''
+        contents = ''
+        div_cont = data_dt.find('div', {'id': "content"})
         all_p = div_cont.findAll('p')
+
         for ap in all_p:
             ap = ap.text.strip()
-            content += ap + '<br>'
+            contents += ap + '<br>'
+
+        if len(contents) >= 1900:
+            content = contents.split('<br>')[0]
+            print(movie_no, content)
+        elif 1900 > len(contents) >= 1750:
+            content = contents.split('<br><br>')[0]
+            print(movie_no, content)
+        else:
+            content = contents
 
         # Oracle Connection - insert
         os.environ["NLS_LANG"] = ".AL32UTF8"
@@ -139,4 +146,3 @@ for page in range(max):
         conn.close
 
     print(page + 1)
-    print(no_list[-1])
