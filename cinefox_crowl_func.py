@@ -15,9 +15,8 @@ max = int(max.replace('...', ''))
 
 # get movie info from Cinefox
 for page in range(max):
-    url = 'http://clean.cinefox.com/vod/movie/list?page=202'
-          # + str(page + 1)
-    result = requests.request("GET", url)
+    url = 'http://clean.cinefox.com/vod/movie/list?page=' + str(page + 1)
+    result = requests.get(url=url, timeout=10)
     data = BeautifulSoup(result.content, 'html.parser')
 
     div = data.findAll('div', {'class': "postimg"})
@@ -30,7 +29,7 @@ for page in range(max):
 
         # get detail info
         url_dt = 'http://clean.cinefox.com/vod/view?product_seq=' + movie_no
-        result_dt = requests.request("GET", url_dt)
+        result_dt = requests.get(url=url_dt, timeout=10)
         data_dt = BeautifulSoup(result_dt.content, 'html.parser')
 
         # get title, titleEng
