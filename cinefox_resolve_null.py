@@ -23,16 +23,22 @@ for movie_no in null_list:
     result = requests.get(url=url, timeout=10)
     data = BeautifulSoup(result.content, 'html.parser')
 
-    div_cont = data.find('div', {'id': "content"}).text.strip()
-    content = re.sub('\t|\r|\n', '', div_cont)
-    content = content.replace('    ', '')
+    div_cont = data.find('div', {'id': "content"})
+    if div_cont is None:
+        content = '<br>'
+    elif div_cont.text.strip() == '':
+        content = '<br>'
+    else:
+        text = div_cont.text.strip()
+        content = re.sub('\t|\r|\n', '', text)
+        content = content.replace('    ', '')
 
-    content = content.replace('. ', '.<br>')
-    content = content.replace('<br>.<br>', '<br>')
-    content = content.replace('.<br>.<br>.<br>', '.<br>')
-    content = content.replace('.<br>.<br>.<br>.<br>', '.<br>')
-    content = content.replace('.<br>.<br>.<br>.<br>.<br>', '.<br>')
-    content = content.replace('.<br>.<br>.<br>.<br>.<br>.<br>', '.<br>')
+        content = content.replace('. ', '.<br>')
+        content = content.replace('<br>.<br>', '<br>')
+        content = content.replace('.<br>.<br>.<br>', '.<br>')
+        content = content.replace('.<br>.<br>.<br>.<br>', '.<br>')
+        content = content.replace('.<br>.<br>.<br>.<br>.<br>', '.<br>')
+        content = content.replace('.<br>.<br>.<br>.<br>.<br>.<br>', '.<br>')
 
     q = "UPDATE movie SET movie_content = :c WHERE movie_no = :n"
     cursor.execute(q, (content, movie_no))
