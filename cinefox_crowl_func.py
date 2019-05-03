@@ -143,5 +143,3 @@ for page in range(max):
         conn.commit()
         cursor.close()
         conn.close
-
-    print(page + 1)
