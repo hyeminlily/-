@@ -13,6 +13,7 @@ r = requests.get(url)
 obj = BeautifulSoup(data, 'html.parser')
 div = obj.find_all('div', {'class': 'thumb'})
 
+no = []
 for i in div:
     # 영화 상세페이지 링크
     '''[link]'''
@@ -183,3 +184,8 @@ for i in div:
     conn.commit()
     cursor.close()
     conn.close
+
+    no.append(int(movino))
+
+print(no)
+print(len(no))
