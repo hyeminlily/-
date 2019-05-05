@@ -1,29 +1,28 @@
 import cx_Oracle as oc
 import os
-import bs4
 import urllib.request
 import requests
 import re
 from bs4 import BeautifulSoup
 
-# naver영화 페이지 url
-url='https://movie.naver.com/movie/running/current.nhn'
+# naver 영화 페이지 url
+url = 'https://movie.naver.com/movie/running/current.nhn'
 data = urllib.request.urlopen(url)
 r = requests.get(url)
 
-obj = BeautifulSoup(data,'html.parser')
-div = obj.find_all('div',{'class':'thumb'})
+obj = BeautifulSoup(data, 'html.parser')
+div = obj.find_all('div', {'class': 'thumb'})
 
 for i in div:
-    # 영화상세페이지 링크
+    # 영화 상세페이지 링크
     '''[link]'''
     link1 = i.find('a')['href']
     link = 'https://movie.naver.com' + link1
 
     r1 = requests.get(link)
-    obj2 = BeautifulSoup(r1.content ,'html.parser')
+    obj2 = BeautifulSoup(r1.content, 'html.parser')
 
-    #영화 코드 추출
+    # 영화 코드 추출
     '''[movino]'''
         # print(link1) => /movie/bi/mi/basic.nhn?code=164200
         # 위처럼 나와서 = 부터 마지막까지(-1) 잘라서 가져옴
@@ -32,7 +31,7 @@ for i in div:
 
     # 한글 영화제목 추출
     '''[title]'''
-    title1 = obj2.find('h3',{'class':'h_movie'})
+    title1 = obj2.find('h3', {'class': 'h_movie'})
     title = title1.find('a').text.strip()
 
     # 영어 영화제목 추출
@@ -40,7 +39,7 @@ for i in div:
 
     titleeng1 = obj2.find('strong',{'class':'h_movie2'}).text.split(',')
 
-    # split(,) 로 나누면 영문제목이 최대 2개의 , 로 나눠져있음. 그것을 list 길이로 구분해서 추출한것
+    # split(,) 로 나누면 영문제목이 최대 2개의 , 로 나눠져있음. 그것을 list 길이로 구분해서 추출한 것
     if len(titleeng1) == 3:
         # , 두개로 나눠져있는 영문제목은 0번째 index와 1번째 index의 list를 하나로 합쳐주었음
         # strip은 양옆의 whitespace를 제거해준다.
@@ -54,9 +53,7 @@ for i in div:
         titleeng = ''
     else:
         titleeng = titleeng1[0].strip()
-
     titleeng = titleeng.strip()
-
 
     # 영화 배우(주연,조연) 이름 추출
     '''[actor]'''
@@ -73,16 +70,14 @@ for i in div:
             ac = ats.find('a').text
             actor += ac + ', '
         actor = actor[:-2]
-
     actor = actor.strip()
-
 
     # 영화 감독
     '''[director]'''
+
     dir_name = actor_obj.find('div', {'class': "dir_product"})
     director = dir_name.find('a', {'class': "k_name"}).text
     director = director.strip()
-    # print(director)
 
     # 영화 정보
     '''[opendate] [grade] [runtime] [nation] [genre]'''
@@ -98,7 +93,6 @@ for i in div:
 
     for a in all_a_spec:
         if 'genre' in str(a):
-
             at = a.text + ', '
             genre += at
 
@@ -107,12 +101,10 @@ for i in div:
             nation += at
 
         if 'grade' in str(a):
-            # print(str(a))
-            # print("a.text: ",a.text)
             grade += a.text
             grade = grade.replace('NR', '')
             if grade == '':
-                grade = '등급보류'
+                grade = '등급 보류'
 
             grade = grade.replace('G', '')
             grade = grade.replace('P-13', '')
@@ -121,10 +113,7 @@ for i in div:
             grade = grade.replace('PG', '')
             grade = grade.replace('R', '')
             grade = grade.replace('NC-17', '')
-            # print(grade)
 
-            # print("grade:",grade)
-            # print('-----------')
         if 'open' in str(a):
             at = a.text
             opendate += at
@@ -142,7 +131,6 @@ for i in div:
     opendate = opendate.strip()
     opendate = opendate.replace('.', '/')
     opendate = opendate.strip()
-
 
     # 영화포스터
     '''[src]'''
@@ -164,7 +152,6 @@ for i in div:
         play_url ==''
     else:
         play_href = video_thumb.find('a')['href']
-        # print(type(play_href))
         play_url = 'https://movie.naver.com'+play_href
     play_url = play_url.strip()
 
@@ -184,18 +171,15 @@ for i in div:
             content = contents[0]
     content = content.strip()
 
-    print(movino, ', ', title, ', ', titleeng, ', ', genre, ', ', nation, ', ', runtime, ', ', grade, ', ', opendate, ', ', director, ', ', actor, ', ', src, ', ', play_url, ', ', content)
-
     os.environ["NLS_LANG"] = ".AL32UTF8"
     START_VALUE = u"Unicode \u3042 3".encode('utf-8')
     END_VALUE = u"Unicode \u3042 6".encode('utf-8')
 
     conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
     cursor = conn.cursor()
-    cursor.execute('insert into movie values(:movie_no, :movie_title, :movie_titleEng, :movie_genre, :movie_nation, :movie_runtime, :movie_grade, :movie_opendate, :movie_director, :movie_actor, :movie_image_url, :movie_play_url, :movie_content)',
+    cursor.execute('insert into movie values(:movie_no, :movie_title, :movie_titleEng, :movie_genre, :movie_nation, :movie_runtime, :movie_grade, :movie_opendate, :movie_director, :movie_actor, :movie_image_url, :movie_play_url, :movie_content, :movie_nowplaying)',
                    movie_no=int(movino), movie_title=title, movie_titleEng=titleeng, movie_genre=genre, movie_nation=nation, movie_runtime=runtime, movie_grade=grade, movie_opendate=opendate,
-                   movie_director=director, movie_actor=actor, movie_image_url=src, movie_play_url=play_url, movie_content=content)
-    print(movino)
+                   movie_director=director, movie_actor=actor, movie_image_url=src, movie_play_url=play_url, movie_content=content, movie_nowplaying=1)
     conn.commit()
     cursor.close()
     conn.close
