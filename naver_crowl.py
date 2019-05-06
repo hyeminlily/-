@@ -135,10 +135,10 @@ for i in div:
 
     # 영화포스터
     '''[src]'''
-
-    poster = obj2.find('div', {'class': "poster"})
-    src = poster.find('img')['src']
-    src = src.strip()
+    # poster = obj2.find('div', {'class': "poster"})
+    # src = poster.find('img')['src']
+    # src = src.strip()
+    src = 'https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode=' + movino
 
     # 영화 영상 url
     '''[play_url]'''
@@ -178,9 +178,9 @@ for i in div:
 
     conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
     cursor = conn.cursor()
-    cursor.execute('insert into movie values(:movie_no, :movie_title, :movie_titleEng, :movie_genre, :movie_nation, :movie_runtime, :movie_grade, :movie_opendate, :movie_director, :movie_actor, :movie_image_url, :movie_play_url, :movie_content, :movie_nowplaying)',
+    cursor.execute('insert into movie values(:movie_no, :movie_title, :movie_titleEng, :movie_genre, :movie_nation, :movie_runtime, :movie_grade, :movie_opendate, :movie_director, :movie_actor, :movie_image_url, :movie_play_url, :movie_content, :movie_nowplaying, :movie_nowrank)',
                    movie_no=int(movino), movie_title=title, movie_titleEng=titleeng, movie_genre=genre, movie_nation=nation, movie_runtime=runtime, movie_grade=grade, movie_opendate=opendate,
-                   movie_director=director, movie_actor=actor, movie_image_url=src, movie_play_url=play_url, movie_content=content, movie_nowplaying=1)
+                   movie_director=director, movie_actor=actor, movie_image_url=src, movie_play_url=play_url, movie_content=content, movie_nowplaying=1, movie_nowrank=0)
     conn.commit()
     cursor.close()
     conn.close
