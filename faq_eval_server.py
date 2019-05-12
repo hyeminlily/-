@@ -1,15 +1,28 @@
 from flask import Flask, render_template, request, session
 from bson import ObjectId
 import datetime
-import faq_func
+import faq_func, get_movie_list, get_mbr_info, get_cnt_graph
 
 app = Flask(__name__)
 
+@app.route('/result')
+def evalResult():
+    member_no = request.args.get('member_no', '')
+    title_list = get_movie_list.getTitle(int(member_no))
+    list = get_movie_list.getList(int(member_no))
+    list1 = list[0]
+    list2 = list[1]
+    list3 = list[2]
+    nickname, cnt_zzim, cnt_good, cnt_bad = get_mbr_info.getInfo(int(member_no))
+    get_cnt_graph(int(member_no))
+    return render_template('result.html')
+
 @app.route('/board')
 def getList():
+    member_no = request.args.get('member_no', '')
     list = faq_func.getList()
     faq = faq_func.getFaq()
-    return render_template('board.html', list=list, faq=faq)
+    return render_template('board.html', member_no=member_no, list=list, faq=faq)
 
 @app.route('/dashboard')
 def dashboard():
@@ -90,4 +103,4 @@ def deletefaq():
     return render_template('faqboard.html', list=list)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='203.236.209.108')
+    app.run(debug=True, host='192.168.219.186')

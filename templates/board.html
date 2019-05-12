@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HYEMINSEO</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
+    <title>철수와 영화</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/board.css')}}">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
         $(function(){
+            $("#logout").click(function() {
+                if (window.sessionStorage) {
+                    window.sessionStorage.setItem("member_no", 0);
+                }
+                location.href="http://203.236.209.108:8089/controller/start.jsp";
+            });
             $(window).scroll(function() {
                 if($(this).scrollTop() > $("#header").height()) {
                     $("#navbar").addClass("sticky");
@@ -49,22 +58,21 @@
 <body>
     <header>
         <div id="header" class="header">
-            <a href="http://203.236.209.108:8089/controller/main.jsp"><img src="{{url_for('static', filename='img/logo_finish_2.svg')}}"></a>
+            <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_finish_2.svg')}}"></a>
         </div>
-
         <nav id="navbar" class="navbar">
             <div class="navbar-logo">
-                <a href="http://203.236.209.108:8089/controller/main.jsp"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a>
+                <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a>
             </div>
             <div class="navbar-list">
-                <a href="http://203.236.209.108:8089/controller/main.jsp">누리-집</a>
-                <a href="http://203.236.209.108:8089/controller/list.jsp">영화-목록</a>
+                <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;누리-집</a>
+                <a href="http://203.236.209.108:8089/controller/list?member_no={{member_no}}"><i class="material-icons">movie_filter</i>&nbsp;&nbsp;영화-목록</a>
                 <div class="dropdown">
-                    <button class="dropbtn">(nickname)&nbsp;&nbsp;<i class="fas fa-sort-amount-down" style="font-size: 16px;"></i></button>
+                    <button class="dropbtn">☆${member_nickname}☆&nbsp;&nbsp;<i class="fas fa-sort-amount-down" style="font-size: 16px;"></i></button>
                     <div id="dropdown-content" class="dropdown-content">
-                        <a href="http://203.236.209.108:8089/controller/updateMember">정보-고침</a>
-                        <a href="http://203.236.209.108:5000/board">알림-판</a>
-                        <a href="http://203.236.209.108:8089/controller/start.jsp">접속-해지</a>
+                        <a href="http://203.236.209.108:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;정보-고침</a>
+                        <a href="http://203.236.209.108:5000/board"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;알림-판</a>
+                        <a href="http://203.236.209.108:8089/controller/start.jsp" id="logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;접속-해지</a>
                     </div>
                 </div>
             </div>
@@ -74,15 +82,14 @@
                 </form>
             </div>
         </nav>
-
         <button class="btn-menu"><i id="icon-menu" class="fas fa-bars"></i></button>
         <div id="sidebar" class="sidebar">
             <i id="icon-close" class="fas fa-times"></i>
-            <a href="http://203.236.209.108:8089/controller/main.jsp"><i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;누리-집</a>
-            <a href="http://203.236.209.108:8089/controller/list.jsp"><i class="fas fa-heart"></i>&nbsp;&nbsp;&nbsp;영화-목록</a>
-            <a href="http://203.236.209.108:8089/controller/updateMember"><i class="fas fa-pen"></i>&nbsp;&nbsp;&nbsp;정보-고침</a>
+            <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;누리-집</a>
+            <a href="http://203.236.209.108:8089/controller/list?member_no={{member_no}}"><i class="fas fa-heart"></i>&nbsp;&nbsp;&nbsp;영화-목록</a>
+            <a href="http://203.236.209.108:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;&nbsp;정보-고침</a>
             <a href="http://203.236.209.108:5000/board"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;알림-판</a>
-            <a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;접속-해지</a>
+            <a href="http://203.236.209.108:8089/controller/start.jsp"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;접속-해지</a>
         </div>
     </header>
 
@@ -189,7 +196,7 @@
     <footer>
         <div id="footer" class="footer">
             <ul class="footer-ul">
-                <li class="footer-li"><a href="main.jsp"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a></li>
+                <li class="footer-li"><a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a></li>
                 <li class="footer-li">&copy; 철수와 영화 2019</li>
                 <li class="footer-li">慧珉庶 (hyeminseo)</li>
             </ul>
