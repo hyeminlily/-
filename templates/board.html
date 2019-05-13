@@ -12,8 +12,52 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/board.css')}}">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='js/board.js')}}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            var member_no = ${"#member_no"}.val();
+            if (member_no == 1) {
+                $("#btn_host").css("display", "block");
+                $("#btn_host").attr("href", "dashboard");
+            }
+
+            if (window.sessionStorage) {
+                window.sessionStorage.setItem("member_no", member_no);
+            }
+            if (window.sessionStorage) {
+                memberno = window.sessionStorage.getItem("member_no");
+            }
+            $("#logout").click(function() {
+                if (window.sessionStorage) {
+                    window.sessionStorage.setItem("member_no", 0);
+                }
+                location.href="http://203.236.209.108:8089/controller/start.jsp";
+            });
+            $(window).scroll(function() {
+                if($(this).scrollTop() > $("#header").height()) {
+                    $("#navbar").addClass("sticky");
+                    $("#dropdown-content").css("top", "0");
+                    $("#btn_top").css("display", "block");
+                }
+                else {
+                    $("#navbar").removeClass("sticky");
+                    $("#dropdown-content").css("top", $("#header").height()-$(this).scrollTop()+60);
+                    $("#btn_top").css("display", "none");
+                }
+            });
+            $(".btn-menu").click(function(){
+                $("#sidebar").css("width", "140px");
+                $("#icon-close").css("display", "block");
+            });
+            $("#icon-close").click(function(){
+                $("#sidebar").css("width", "0");
+            });
+            $("#btn_top").click(function(){
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -152,7 +196,7 @@
             }
         </script>
         <button id="btn_top"><i class="fas fa-arrow-circle-up" style="color: rgba(236, 196, 136, 0.8);"></i></button>
-        <button class="btn_host"><a id="btn_host"></a></button>
+        <a id="btn_host"><i class="fas fa-sign-in-alt" style="color: rgba(104, 180, 171, 0.8);"></i></a>
     </main>
 
     <footer>
