@@ -414,15 +414,15 @@ input:-ms-input-placeholder {
 .info_spec {
 	max-width: 60%;
 }
-#content {
+.content {
 	color: rgb(236, 196, 136);
 	font-family: 'TmonMonsori', 'Noto Sans KR', sans-serif;
 	font-size: 19px;
 }
-#content i {
+.content i {
 	font-size: 19px;
 }
-#content p {
+.content p {
 	margin-top: 20px;
 	color: rgba(255, 255, 255, 0.8);
 	font-family: 'Noto Sans KR', sans-serif;

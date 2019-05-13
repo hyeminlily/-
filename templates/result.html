@@ -2,9 +2,197 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
+    <title>철수와 영화</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/result.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/board.css')}}">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            window.onclick = function(event) {
+                var modal1 = document.getElementById("modal1");
+                if (event.target == modal1) {
+                    modal1.style.display = "none";
+                }
+                var modal2 = document.getElementById("modal2");
+                if (event.target == modal2) {
+                    modal2.style.display = "none";
+                }
+                var modal3 = document.getElementById("modal3");
+                if (event.target == modal3) {
+                    modal3.style.display = "none";
+                }
+            }
+            $(".list-content").click(function() {
+                $(".modal").css("display", "block");
+            });
+            $("#close").click(function() {
+                $(".detail").html("");
+            });
+        });
+    </script>
 </head>
 <body>
+    <div class="result">
+        <h1>철수가 분석한 영희 "{{member_nickname}}"의 취향 모음집-★</h1>
+        <div class="info_cnt">
+            <div class="cnt">
+                <h2>{{cnt_zzim}}</h2>
+                <p>찜 <i class="fas fa-heart"></i></p>
+            </div>
+            <div class="cnt">
+                <h2>{{cnt_good}}</h2>
+                <p>좋아요 <i class="fas fa-thumbs-up"></i></p>
+            </div>
+            <div class="cnt">
+                <h2>{{cnt_bad}}</h2>
+                <p>싫어요 <i class="fas fa-thumbs-down"></i></p>
+            </div>
+        </div>
+        <hr>
+        <div class="graph">
+            <h2>"{{member_nickname}}"님의 날짜별 좋아요 횟수 :)</h2>
+            <img src="{{url_for('static', filename='graphs/cnt_graph_{{member_no}}.jpg')}}">
+        </div>
+        <hr>
+        <div class="rec_list">
+            <h3>이 중에 네 취향이 하나쯤은 있겠지? ^3^ - by 철수</h3>
 
+            <div class="rec_wrap">
+                {% if list1.length > 0 %}
+                    <h4>가장 최근에 좋아요를 누른 작품 <b>"{{title1}}"</b> 와/과 유사한 영화를 추천해드려요 ~</h4>
+                    <div class="list">
+                    {% for mv1 in list1 %}
+                        <div class="list-content">
+                            <div class="list-wrapper">
+                                <img class="poster_img" src="{{mv1.movie_image_url}}" title="{{mv1.movie_title}}">
+                            </div>
+                            <h5>{{mv1.movie_title}}</h5>
+                        </div>
+
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <span id="close1" class="close">&times;</span>
+                                <div class="detail">
+                                    <div class="poster">
+                                        <img src="{{mv1.movie_image_url}}" title="{{mv1.movie_title}}">
+                                        <a href="{{mv1.movie_play_url}}" target="_blank" title="클릭 시 VOD 재생 창이 열려요 :)"><i class="far fa-play-circle"></i></a>
+                                    </div>
+                                    <h1>{{mv1.movie_title}}</h1>
+                                    <h5>{{mv1.movie_titleEng}}</h5>
+                                    <span>[개요]&nbsp;&nbsp;&nbsp;{{mv1.movie_genre}}&nbsp;&nbsp;|&nbsp;&nbsp;{{mv1.movie_runtime}}&nbsp;&nbsp;|&nbsp;&nbsp;{{mv1.movie_nation}}</span><br>
+                                    <span>[등급]&nbsp;&nbsp;&nbsp;{{mv1.movie_grade}}</span><br>
+                                    <span>[개봉일]&nbsp;&nbsp;&nbsp;{{mv1.movie_opendate}}</span><br>
+                                    <span>[감독]&nbsp;&nbsp;&nbsp;{{mv1.movie_director}}</span><br>
+                                    <span>[배우]&nbsp;&nbsp;&nbsp;{{mv1.movie_actor}}</span><br><br><br>
+                                    <span class="content">
+                                        <i class="fas fa-quote-left"></i>&nbsp;&nbsp;줄거리&nbsp;&nbsp;<i class="fas fa-quote-right"></i>
+                                        <p>{{mv1.movie_content}}</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    <h4>아직 좋아요를 누른 작품이 없어요 :(</h4>
+                {% endif %}
+            </div>
+
+            <div class="rec_wrap">
+                {% if list2.length > 0 %}
+                    <h4>가장 최근에 좋아요를 누른 작품 <b>"{{title2}}"</b> 와/과 유사한 영화를 추천해드려요 ~</h4>
+                    <div class="list">
+                    {% for mv2 in list2 %}
+                        <div class="list-content">
+                            <div class="list-wrapper">
+                                <img class="poster_img" src="{{mv2.movie_image_url}}" title="{{mv2.movie_title}}">
+                            </div>
+                            <h5>{{mv2.movie_title}}</h5>
+                        </div>
+
+                        <div id="modal2" class="modal">
+                            <div class="modal-content">
+                                <span id="close2" class="close">&times;</span>
+                                <div class="detail">
+                                    <div class="poster">
+                                        <img src="{{mv2.movie_image_url}}" title="{{mv2.movie_title}}">
+                                        <a href="{{mv2.movie_play_url}}" target="_blank" title="클릭 시 VOD 재생 창이 열려요 :)"><i class="far fa-play-circle"></i></a>
+                                    </div>
+                                    <h1>{{mv2.movie_title}}</h1>
+                                    <h5>{{mv2.movie_titleEng}}</h5>
+                                    <span>[개요]&nbsp;&nbsp;&nbsp;{{mv2.movie_genre}}&nbsp;&nbsp;|&nbsp;&nbsp;{{mv2.movie_runtime}}&nbsp;&nbsp;|&nbsp;&nbsp;{{mv2.movie_nation}}</span><br>
+                                    <span>[등급]&nbsp;&nbsp;&nbsp;{{mv2.movie_grade}}</span><br>
+                                    <span>[개봉일]&nbsp;&nbsp;&nbsp;{{mv2.movie_opendate}}</span><br>
+                                    <span>[감독]&nbsp;&nbsp;&nbsp;{{mv2.movie_director}}</span><br>
+                                    <span>[배우]&nbsp;&nbsp;&nbsp;{{mv2.movie_actor}}</span><br><br><br>
+                                    <span class="content">
+                                        <i class="fas fa-quote-left"></i>&nbsp;&nbsp;줄거리&nbsp;&nbsp;<i class="fas fa-quote-right"></i>
+                                        <p>{{mv2.movie_content}}</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    <h4>아직 좋아요를 누른 작품이 없어요 :(</h4>
+                {% endif %}
+            </div>
+
+            <div class="rec_wrap">
+                {% if list3.length > 0 %}
+                    <h4>가장 최근에 좋아요를 누른 작품 <b>"{{title3}}"</b> 와/과 유사한 영화를 추천해드려요 ~</h4>
+                    <div class="list">
+                    {% for mv3 in list3 %}
+                        <div class="list-content">
+                            <div class="list-wrapper">
+                                <img class="poster_img" src="{{mv3.movie_image_url}}" title="{{mv3.movie_title}}">
+                            </div>
+                            <h5>{{mv3.movie_title}}</h5>
+                        </div>
+
+                        <div id="modal3" class="modal">
+                            <div class="modal-content">
+                                <span id="close3" class="close">&times;</span>
+                                <div class="detail">
+                                    <div class="poster">
+                                        <img src="{{mv3.movie_image_url}}" title="{{mv3.movie_title}}">
+                                        <a href="{{mv3.movie_play_url}}" target="_blank" title="클릭 시 VOD 재생 창이 열려요 :)"><i class="far fa-play-circle"></i></a>
+                                    </div>
+                                    <h1>{{mv3.movie_title}}</h1>
+                                    <h5>{{mv3.movie_titleEng}}</h5>
+                                    <span>[개요]&nbsp;&nbsp;&nbsp;{{mv3.movie_genre}}&nbsp;&nbsp;|&nbsp;&nbsp;{{mv3.movie_runtime}}&nbsp;&nbsp;|&nbsp;&nbsp;{{mv3.movie_nation}}</span><br>
+                                    <span>[등급]&nbsp;&nbsp;&nbsp;{{mv3.movie_grade}}</span><br>
+                                    <span>[개봉일]&nbsp;&nbsp;&nbsp;{{mv3.movie_opendate}}</span><br>
+                                    <span>[감독]&nbsp;&nbsp;&nbsp;{{mv3.movie_director}}</span><br>
+                                    <span>[배우]&nbsp;&nbsp;&nbsp;{{mv3.movie_actor}}</span><br><br><br>
+                                    <span class="content">
+                                        <i class="fas fa-quote-left"></i>&nbsp;&nbsp;줄거리&nbsp;&nbsp;<i class="fas fa-quote-right"></i>
+                                        <p>{{mv3.movie_content}}</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    <h4>아직 좋아요를 누른 작품이 없어요 :(</h4>
+                {% endif %}
+            </div>
+        </div>
+        <div id="footer" class="footer">
+            <ul class="footer-ul">
+                <li class="footer-li"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></li>
+                <li class="footer-li">&copy; 철수와 영화 2019</li>
+                <li class="footer-li">慧珉庶 (hyeminseo)&nbsp;<i class="far fa-smile" style="font-size: 14px; color: rgb(236, 196, 136);"></i></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

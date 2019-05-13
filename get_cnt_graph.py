@@ -27,4 +27,4 @@ def getGraph(no):
     with plt.style.context('ggplot'):
         plt.plot(date, cnt, color='#68B4AB')
         plt.ylabel('좋아요 횟수', fontsize=16)
-        plt.savefig(r'graphs/cnt_graph_' + str(no) + '.jpg', format='jpg')
+        plt.savefig(r'static/graphs/cnt_graph_' + str(no) + '.jpg', format='jpg')

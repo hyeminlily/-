@@ -11,12 +11,9 @@ def evalResult():
     member_no = request.args.get('member_no', '')
     title_list = get_movie_list.getTitle(int(member_no))
     list = get_movie_list.getList(int(member_no))
-    list1 = list[0]
-    list2 = list[1]
-    list3 = list[2]
     nickname, cnt_zzim, cnt_good, cnt_bad = get_mbr_info.getInfo(int(member_no))
     get_cnt_graph(int(member_no))
-    return render_template('result.html')
+    return render_template('result.html', list1=list[0], list2=list[1], list3=list[2], title1=title_list[0], title2=title_list[1], title3=title_list[2], member_no=member_no, member_nickname=nickname, cnt_zzim=cnt_zzim, cnt_good=cnt_good, cnt_bad=cnt_bad)
 
 @app.route('/board')
 def getList():
