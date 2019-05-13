@@ -13,47 +13,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/board.css')}}">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            $("#logout").click(function() {
-                if (window.sessionStorage) {
-                    window.sessionStorage.setItem("member_no", 0);
-                }
-                location.href="http://203.236.209.108:8089/controller/start.jsp";
-            });
-            $(window).scroll(function() {
-                if($(this).scrollTop() > $("#header").height()) {
-                    $("#navbar").addClass("sticky");
-                    $("#dropdown-content").css("top", "0");
-                    $("#btn_top").css("display", "block");
-                }
-                else {
-                    $("#navbar").removeClass("sticky");
-                    $("#dropdown-content").css("top", $("#header").height()-$(this).scrollTop()+60);
-                    $("#btn_top").css("display", "none");
-                }
-            });
-            $(".btn-menu").click(function(){
-                $("#sidebar").css("width", "140px");
-                $("#icon-close").css("display", "block");
-            });
-            $("#icon-close").click(function(){
-                $("#sidebar").css("width", "0");
-            });
-            $("#btn_top").click(function(){
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            });
-            $("#chevron-down").click(function(){
-                $("#chevron-down").css("display", "none");
-                $("#chevron-up").css("display", "block");
-            });
-            $("#chevron-up").click(function(){
-                $("#chevron-up").css("display", "none");
-                $("#chevron-down").css("display", "block");
-            });
-        });
-    </script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/board.js')}}"></script>
 </head>
 <body>
     <header>
@@ -68,10 +28,10 @@
                 <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;누리-집</a>
                 <a href="http://203.236.209.108:8089/controller/list?member_no={{member_no}}"><i class="material-icons">movie_filter</i>&nbsp;&nbsp;영화-목록</a>
                 <div class="dropdown">
-                    <button class="dropbtn">☆${member_nickname}☆&nbsp;&nbsp;<i class="fas fa-sort-amount-down" style="font-size: 16px;"></i></button>
+                    <button class="dropbtn">☆{{member_nickname}}☆&nbsp;&nbsp;<i class="fas fa-sort-amount-down" style="font-size: 16px;"></i></button>
                     <div id="dropdown-content" class="dropdown-content">
                         <a href="http://203.236.209.108:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;정보-고침</a>
-                        <a href="http://203.236.209.108:5000/board"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;알림-판</a>
+                        <a href="http://203.236.209.108:5000/board?member_no={{member_no}}"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;알림-판</a>
                         <a href="http://203.236.209.108:8089/controller/start.jsp" id="logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;접속-해지</a>
                     </div>
                 </div>
@@ -88,12 +48,13 @@
             <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;누리-집</a>
             <a href="http://203.236.209.108:8089/controller/list?member_no={{member_no}}"><i class="fas fa-heart"></i>&nbsp;&nbsp;&nbsp;영화-목록</a>
             <a href="http://203.236.209.108:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;&nbsp;정보-고침</a>
-            <a href="http://203.236.209.108:5000/board"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;알림-판</a>
+            <a href="http://203.236.209.108:5000/board?member_no={{member_no}}"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;알림-판</a>
             <a href="http://203.236.209.108:8089/controller/start.jsp"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;접속-해지</a>
         </div>
     </header>
 
     <main>
+        <input type="hidden" id="member_no" value="{{member_no}}">
         <div class="main">
             <h2>알림-판</h2>
             {% for l in list %}
@@ -104,7 +65,7 @@
                 <div class="panel"><p>{{l.content}}</p></div>
             {% endfor %}
 
-            <h2>질문-덩어리</h2>
+            <h2>질문-모음집</h2>
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'question')">자주 묻는 질문</button>
                 <button class="tablinks" onclick="openTab(event, 'login')">로그인 / 회원가입</button>
@@ -190,7 +151,8 @@
                 evt.currentTarget.className += " active";
             }
         </script>
-        <button id="btn_top"><i class="fas fa-arrow-circle-up" style="color: rgba(236, 196, 136, 0.8);"></i></button></i>
+        <button id="btn_top"><i class="fas fa-arrow-circle-up" style="color: rgba(236, 196, 136, 0.8);"></i></button>
+        <button class="btn_host"><a id="btn_host"></a></button>
     </main>
 
     <footer>

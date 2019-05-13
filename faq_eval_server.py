@@ -4,6 +4,7 @@ import datetime
 import faq_func, get_movie_list, get_mbr_info, get_cnt_graph
 
 app = Flask(__name__)
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 @app.route('/result')
 def evalResult():
@@ -20,9 +21,10 @@ def evalResult():
 @app.route('/board')
 def getList():
     member_no = request.args.get('member_no', '')
+    nickname, cnt_zzim, cnt_good, cnt_bad = get_mbr_info.getInfo(int(member_no))
     list = faq_func.getList()
     faq = faq_func.getFaq()
-    return render_template('board.html', member_no=member_no, list=list, faq=faq)
+    return render_template('board.html', member_no=member_no, member_nickname=nickname, list=list, faq=faq)
 
 @app.route('/dashboard')
 def dashboard():
@@ -103,4 +105,4 @@ def deletefaq():
     return render_template('faqboard.html', list=list)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.219.186')
+    app.run(debug=True, host='203.236.209.108')
