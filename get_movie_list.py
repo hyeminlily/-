@@ -51,12 +51,10 @@ def getRecom(title):
 
 def getList(no):
     title = getTitle(no)
-    print(title)
     list = []
 
     if title != '' and title != None:
         mv_list = getRecom(title)
-        print(mv_list)
         if len(mv_list) > 0:
             for mv in mv_list:
                 inner_list = []
@@ -79,5 +77,3 @@ def getList(no):
             return list
     else:
         return list
-
-getList(5)

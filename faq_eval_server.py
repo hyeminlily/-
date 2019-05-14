@@ -4,7 +4,6 @@ import datetime
 import faq_func, get_movie_list, get_mbr_info, get_cnt_graph
 
 app = Flask(__name__)
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 @app.route('/result')
 def evalResult():
@@ -19,7 +18,6 @@ def evalResult():
 def getList():
     member_no = request.args.get('member_no', '')
     nickname, cnt_zzim, cnt_good, cnt_bad = get_mbr_info.getInfo(int(member_no))
-    print(nickname)
     list = faq_func.getList()
     faq = faq_func.getFaq()
     return render_template('board.html', member_no=member_no, member_nickname=nickname, list=list, faq=faq)
@@ -103,6 +101,4 @@ def deletefaq():
     return render_template('faqboard.html', list=list)
 
 if __name__ == '__main__':
-    app.jinja_env.auto_reload = True
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(debug=True, host='203.236.209.108')
