@@ -144,3 +144,5 @@ for page in range(max):
         cursor.close()
         conn.close
 
+    print(page)
+
