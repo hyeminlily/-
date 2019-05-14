@@ -1,3 +1,6 @@
+*:focus {
+	outline: none;
+}
 body {
     margin: 0;
     padding: 0;
@@ -51,7 +54,6 @@ hr {
     height: auto;
     margin-bottom: 40px;
     padding: 0;
-    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .rec_list {
@@ -118,6 +120,126 @@ hr {
     font-size: 16px;
 	text-align: left;
 	color: rgb(236, 196, 136);
+}
+
+/* main - modal 상세 정보 */
+.modal {
+	width: 100%;
+	height: 100%;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	position: fixed;
+	overflow: auto;
+	z-index: 10;
+}
+.modal-content {
+	width: 50%;
+	max-height: calc(100vh - 250px);
+	overflow-y: auto;
+	margin: auto;
+	padding: 30px 50px;
+	background-color: rgb(207, 76, 66);
+	border: 1px solid rgb(236, 196, 136);
+}
+.close {
+	float: right;
+	font-size: 2.85vw;
+	font-weight: bold;
+	color: rgba(236, 196, 136, 0.4);
+	z-index: 15;
+}
+.close:hover, .close:focus {
+	color: rgb(236, 196, 136);
+	text-decoration: none;
+	cursor: pointer;
+	z-index: 15;
+}
+
+/* main - modal 영화 내용 */
+.detail {
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgba(255, 255, 255, 0.8);
+}
+.detail h1 {
+	margin-bottom: 0;
+	font-family: 'TmonMonsori', 'Noto Sans KR', sans-serif;
+	color: rgb(236, 196, 136);
+}
+.detail h5 {
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+    font-family: 'TmonMonsori', 'Noto Sans KR', sans-serif;
+    font-weight: lighter;
+    color: rgb(236, 196, 136);
+}
+.poster {
+	margin: 5px;
+    padding: 5px;
+    top: 100px;
+    right: -30px;
+    position: relative;
+    float: right;
+    vertical-align: middle;
+}
+.poster img {
+	width: 153px;
+	height: auto;
+	border: 1px solid rgb(236, 196, 136);
+	object-fit: cover;
+}
+.poster a {
+	top: 37%;
+    right: 33%;
+	text-align: center;
+	text-decoration: none;
+	color: rgb(104, 180, 171);
+	position: absolute;
+	z-index: 11;
+}
+.poster i {
+	font-size: 48px;
+	color: rgb(104, 180, 171);
+	z-index: 11;
+}
+.poster i:hover {
+	color: rgb(207, 76, 66);
+}
+
+/* main - modal 영화 정보 및 줄거리 */
+.info_spec {
+	max-width: 60%;
+}
+.content {
+	color: rgb(236, 196, 136);
+	font-family: 'TmonMonsori', 'Noto Sans KR', sans-serif;
+	font-size: 19px;
+}
+.content i {
+	font-size: 19px;
+}
+.content p {
+	margin-top: 20px;
+	color: rgba(255, 255, 255, 0.8);
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+}
+
+/* scroll */
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: rgba(70, 140, 132, 0.3);
+}
+::-webkit-scrollbar-thumb {
+	background: rgb(70, 140, 132);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(236, 196, 136, 0.8);
 }
 
 /* footer */

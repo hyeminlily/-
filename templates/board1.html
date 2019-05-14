@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
     <link rel="icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
     <title>철수와 영화</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/board.css')}}">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
         $(function(){
-            var member_no = $("#member_no").val();
+            var member_no = ${"#member_no"}.val();
             if (member_no == 1) {
                 $("#btn_host").css("display", "block");
                 $("#btn_host").attr("href", "dashboard");
@@ -54,24 +56,8 @@
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
             });
-
-            // 좋아요 없으면 취향 분석 페이지 아이콘 보이지 않기
-            $.ajax({url: "http://203.236.209.108:8089/controller/goodlist?member_no="+member_no, success: function(data) {
-                g_arr = eval("("+data+")");
-                if (g_arr.length == 0) {
-                    $(".btn_eval").css("display", "none");
-                    $(".eval_close").css("display", "none");
-                }
-            }});
-            // 취향 분석 페이지 아이콘 닫기
-            $("#eval_close").click(function() {
-                $(".btn_eval").css("display", "none");
-                $(".eval_close").css("display", "none");
-            });
         });
     </script>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/font.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/board.css')}}">
 </head>
 <body>
     <header>
@@ -89,13 +75,13 @@
                     <button class="dropbtn">☆{{member_nickname}}☆&nbsp;&nbsp;<i class="fas fa-sort-amount-down" style="font-size: 16px;"></i></button>
                     <div id="dropdown-content" class="dropdown-content">
                         <a href="http://203.236.209.108:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;정보-고침</a>
-                        <a href="board?member_no={{member_no}}"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;알림-판</a>
+                        <a href="http://203.236.209.108:5000/board?member_no={{member_no}}"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;알림-판</a>
                         <a href="http://203.236.209.108:8089/controller/start.jsp" id="logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;접속-해지</a>
                     </div>
                 </div>
             </div>
             <div class="searchbar">
-                <form action="http://203.236.209.108:8089/controller/search" method="POST">
+                <form action="search" method="POST">
                     <input type="text" name="search" placeholder="검색">
                 </form>
             </div>
@@ -106,15 +92,15 @@
             <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;누리-집</a>
             <a href="http://203.236.209.108:8089/controller/list?member_no={{member_no}}"><i class="fas fa-heart"></i>&nbsp;&nbsp;&nbsp;영화-목록</a>
             <a href="http://203.236.209.108:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;&nbsp;정보-고침</a>
-            <a href="board?member_no={{member_no}}"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;알림-판</a>
+            <a href="http://203.236.209.108:5000/board?member_no={{member_no}}"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;알림-판</a>
             <a href="http://203.236.209.108:8089/controller/start.jsp"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;접속-해지</a>
         </div>
     </header>
 
     <main>
-        <input type="hidden" id="member_no" name="member_no" value="{{member_no}}">
+        <input type="hidden" id="member_no" value="{{member_no}}">
         <div class="main">
-            <h2>알림-판<a id="btn_host" target="_blank"><i class="fas fa-sign-in-alt" style="color: rgb(236, 196, 136);"></i></a></h2>
+            <h2>알림-판</h2>
             {% for l in list %}
                 <button class="accordion">{{l.title}}
                     <i id="chevron-down" class="fas fa-chevron-down" style="font-size: 20px; color: rgb(236, 196, 136); float: right;"></i>
@@ -209,9 +195,8 @@
                 evt.currentTarget.className += " active";
             }
         </script>
-        <div class="btn_eval"><a href="result?member_no={{member_no}}" target="_blank"><i class="fa fa-heartbeat"></i><p>영희야, 철수 보고싶니?<br>그럼 클릭해봐!</p></a></div>
-        <span id="eval_close" class="eval_close">&times;</span>
         <button id="btn_top"><i class="fas fa-arrow-circle-up" style="color: rgba(236, 196, 136, 0.8);"></i></button>
+        <a id="btn_host"><i class="fas fa-sign-in-alt" style="color: rgba(104, 180, 171, 0.8);"></i></a>
     </main>
 
     <footer>

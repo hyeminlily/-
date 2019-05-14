@@ -9,16 +9,17 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 @app.route('/result')
 def evalResult():
     member_no = request.args.get('member_no', '')
-    title_list = get_movie_list.getTitle(int(member_no))
+    title = get_movie_list.getTitle(int(member_no))
     list = get_movie_list.getList(int(member_no))
     nickname, cnt_zzim, cnt_good, cnt_bad = get_mbr_info.getInfo(int(member_no))
-    get_cnt_graph(int(member_no))
-    return render_template('result.html', list1=list[0], list2=list[1], list3=list[2], title1=title_list[0], title2=title_list[1], title3=title_list[2], member_no=member_no, member_nickname=nickname, cnt_zzim=cnt_zzim, cnt_good=cnt_good, cnt_bad=cnt_bad)
+    get_cnt_graph.getGraph(int(member_no))
+    return render_template('result.html', list=list, list_len=len(list), title=title, member_no=member_no, member_nickname=nickname, cnt_zzim=cnt_zzim, cnt_good=cnt_good, cnt_bad=cnt_bad)
 
 @app.route('/board')
 def getList():
     member_no = request.args.get('member_no', '')
     nickname, cnt_zzim, cnt_good, cnt_bad = get_mbr_info.getInfo(int(member_no))
+    print(nickname)
     list = faq_func.getList()
     faq = faq_func.getFaq()
     return render_template('board.html', member_no=member_no, member_nickname=nickname, list=list, faq=faq)
@@ -102,4 +103,6 @@ def deletefaq():
     return render_template('faqboard.html', list=list)
 
 if __name__ == '__main__':
+    app.jinja_env.auto_reload = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(debug=True, host='203.236.209.108')

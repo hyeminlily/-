@@ -13,14 +13,12 @@ def getTitle(no):
     conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
     cursor = conn.cursor()
     cursor.execute('select movie_title from movie where movie_no in (select movie_no from (select rownum, movie_no from '
-                   '(select movie_no from good where member_no = ' + str(no) + ' and movie_good > 0 order by good_date desc) where rownum <= 3))')
+                   '(select movie_no from good where member_no = ' + str(no) + ' and movie_good > 0 order by good_date desc) where rownum = 1))')
 
-    title_list = []
-    for rs in cursor:
-        title_list.append(rs[0])
+    title = cursor.fetchone()[0]
     cursor.close()
     conn.close
-    return title_list
+    return title
 
 # 영화 content를 기반으로 유사한 영화 10개 추천
 def getRecom(title):
@@ -46,39 +44,39 @@ def getRecom(title):
     idx = idxs[title]
     sim_scores = list(enumerate(cos_sim[idx]))
     sim_scores = sorted(sim_scores, key=lambda x:x[1], reverse=True)
-    sim_scores = sim_scores[1:11]
+    sim_scores = sim_scores[1:13]
     movie_idx = [i[0] for i in sim_scores]
     recom_list = list(movie.iloc[movie_idx]['MOVIE_NO'])
     return recom_list
 
 def getList(no):
-    mv_title = getTitle(no)
-    outer_list = []
+    title = getTitle(no)
+    print(title)
+    list = []
 
-    if len(mv_title) > 0:
-        for t in mv_title:
-            rc_list = getRecom(t)
-            inner_list = []
-
-            for rc in rc_list:
-                small_list = []
+    if title != '' and title != None:
+        mv_list = getRecom(title)
+        print(mv_list)
+        if len(mv_list) > 0:
+            for mv in mv_list:
+                inner_list = []
                 os.environ["NLS_LANG"] = ".AL32UTF8"
                 START_VALUE = u"Unicode \u3042 3".encode('utf-8')
                 END_VALUE = u"Unicode \u3042 6".encode('utf-8')
 
                 conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
                 cursor = conn.cursor()
-                cursor.execute('select * from movie where movie_no =' + str(rc) + '')
+                cursor.execute('select * from movie where movie_no =' + str(mv) + '')
                 for rs in cursor:
                     for r in rs:
                         if type(r) == str:
                             r = r.replace('\xa0', ' ')
-                        small_list.append(r)
-                inner_list.append(small_list)
+                            r = r.replace('\u200b', ' ')
+                        inner_list.append(r)
+                    list.append(inner_list)
                 cursor.close()
                 conn.close
-            outer_list.append(inner_list)
-        return outer_list
-
+            return list
     else:
-        return mv_title
+        return list
+
