@@ -34,6 +34,7 @@ for page in range(max):
 
         # get title, titleEng
         title = data_dt.find('span', {'class': 'title'}).text.strip()
+        print(title)
         titleEng = data_dt.find('span', {'class': 'titleEnglish'}).text.strip()
 
         # divide infoWrap
@@ -101,14 +102,6 @@ for page in range(max):
         img_src = data_dt.find('img', {'id': "PIMG"})['src']
         if img_src == '/Modules/storeFox/_view/skin/prodcutView/w_default_v1/images/ageposter_L.png':
             img_src = 'http://cinefox.com/Modules/storeFox/_view/skin/prodcutView/w_default_v1/images/ageposter_L.png'
-        # img = requests.request('GET', img_src, timeout=5)
-
-        # fname = movie_no + '.jpg'
-        # img_file = 'C:/stsTest/2M_Project/src/main/webapp/resources/poster/' + fname
-
-        # file = open(img_file, 'wb')
-        # file.write(img.content)
-        # file.close()
 
         # get content
         content = ''
@@ -143,6 +136,4 @@ for page in range(max):
         conn.commit()
         cursor.close()
         conn.close
-
-    print(page)
 
