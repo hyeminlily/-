@@ -136,7 +136,7 @@ for page in range(max):
 
         conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
         cursor = conn.cursor()
-        cursor.execute('insert into movie values(:movie_no, :movie_title, :movie_titleEng, :movie_genre, :movie_nation, :movie_runtime, :movie_grade, :movie_opendate, :movie_director, :movie_actor, :movie_image_url, :movie_play_url, :movie_content)',
+        cursor.execute('insert into movies values(:movie_no, :movie_title, :movie_titleEng, :movie_genre, :movie_nation, :movie_runtime, :movie_grade, :movie_opendate, :movie_director, :movie_actor, :movie_image_url, :movie_play_url, :movie_content)',
                        movie_no=int(movie_no), movie_title=title, movie_titleEng=titleEng, movie_genre=genre, movie_nation=nation, movie_runtime=runtime,
                        movie_grade=grade, movie_opendate=opendate, movie_director=director, movie_actor=actor, movie_image_url=img_src, movie_play_url=url_dt,
                        movie_content=content)
