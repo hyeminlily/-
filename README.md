@@ -1,5 +1,7 @@
 # 철수와 영화 by HYEMINSEO
 
+### 프로젝트 시연 영상(클릭)(https://youtu.be/-EnaNUyEIOs)
+
 ### 프로젝트명: 철수와 영화
 
 ### 개발 환경:
