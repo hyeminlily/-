@@ -1,8 +1,8 @@
 # 철수와 영화 by HYEMINSEO
 
-### [프로젝트 기능 설명 - SlideShare](#)
-### [프로젝트 소스 보기 - STS 작업 소스](https://github.com/hyeminlily/HYEMINSEO_sts)
-### [프로젝트 시연 영상 - Youtube](https://youtu.be/-EnaNUyEIOs)
+### [프로젝트 기능 설명 - SlideShare (클릭)](#)
+### [프로젝트 소스 보기 - spring 기반 (클릭)](https://github.com/hyeminlily/HYEMINSEO_sts)
+### [프로젝트 시연 영상 - Youtube (클릭)](https://youtu.be/-EnaNUyEIOs)
 
 ### 프로젝트명: 철수와 영화
 
