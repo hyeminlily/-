@@ -189,6 +189,3 @@ for i in div:
     conn.close
 
     no.append(int(movino))
-
-print(no)
-print(len(no))

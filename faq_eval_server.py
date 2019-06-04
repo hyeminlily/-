@@ -34,6 +34,7 @@ def insert():
         content = request.form['content']
         saved_at = datetime.datetime.now()
         faq_func.insert(title, content, saved_at)
+        list = faq_func.getList()
         return render_template('dashboard.html', list=list)
     return render_template('insert.html')
 
@@ -46,6 +47,7 @@ def update():
         content = request.form['content']
         saved_at = datetime.datetime.now()
         faq_func.update(new_id, title, content, saved_at)
+        list = faq_func.getList()
         return render_template('dashboard.html', list=list)
     else:
         orgin_id = request.args.get('id', '')
@@ -58,6 +60,7 @@ def delete():
     orgin_id = request.args.get('id', '')
     new_id = ObjectId(orgin_id)
     faq_func.delete(new_id)
+    list = faq_func.getList()
     return render_template('dashboard.html', list=list)
 
 @app.route('/faqboard')
@@ -73,6 +76,7 @@ def insertfaq():
         content = request.form['content']
         saved_at = datetime.datetime.now()
         faq_func.insertFaq(kinds, title, content, saved_at)
+        list = faq_func.getList()
         return render_template('faqboard.html', list=list)
     return render_template('insertfaq.html')
 
@@ -86,6 +90,7 @@ def updatefaq():
         content = request.form['content']
         saved_at = datetime.datetime.now()
         faq_func.updateFaq(new_id, kinds, title, content, saved_at)
+        list = faq_func.getList()
         return render_template('faqboard.html', list=list)
     else:
         orgin_id = request.args.get('id', '')
@@ -98,6 +103,7 @@ def deletefaq():
     orgin_id = request.args.get('id', '')
     new_id = ObjectId(orgin_id)
     faq_func.deleteFaq(new_id)
+    list = faq_func.getList()
     return render_template('faqboard.html', list=list)
 
 if __name__ == '__main__':

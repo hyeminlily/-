@@ -312,3 +312,26 @@ hr {
 		font-size: 11px;
 	}
 }
+@media screen and (max-width: 615px) {
+    .result {
+        width: 70%;
+    }
+    .result h1 {
+        margin: 70px 35px 40px 35px;
+        font-size: 26px;
+    }
+    .cnt {
+        margin: 0 10px;
+    }
+    .graph h2 {
+        font-size: 20px;
+    }
+    .list-wrapper {
+        width: 120px;
+        height: 171px;
+    }
+    .poster_img {
+        width: auto;
+        height: 180px;
+    }
+}

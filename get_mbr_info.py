@@ -1,6 +1,5 @@
 import cx_Oracle as oc
 import os
-
 def getInfo(no):
     # Oracle Connection
     os.environ["NLS_LANG"] = ".AL32UTF8"

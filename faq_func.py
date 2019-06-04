@@ -1,5 +1,4 @@
 from pymongo import MongoClient
-
 def getList():
     client = MongoClient("localhost", 27017)
     db = client['hyeminseo']
