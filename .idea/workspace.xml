@@ -2,159 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55b5160e-a050-4318-bde1-b9313316cb24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/HYEMINSEO.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crawling/chromedriver.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/cnt_graph_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/cnt_graph_32.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/cnt_graph_43.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/cnt_graph_44.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/cnt_graph_48.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/cnt_graph_5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/cnt_graph_51.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.settings/org.eclipse.m2e.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.settings/org.eclipse.wst.common.component" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.settings/org.eclipse.wst.validation.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.settings/org.springframework.ide.eclipse.beans.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.settings/org.springframework.ide.eclipse.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/.springBeans" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/controller/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/dao/MainDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/db/LoginManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/db/LoginMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/db/MainManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/db/MainMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/db/db-propertise" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/db/sqlMapConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/vo/BadVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/vo/GoodVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/vo/MemberVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/vo/MovieVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/java/com/min/vo/ZzimVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/resources/log4j.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/views/join.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/views/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/views/ref_search.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/views/search.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/views/updateMember.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/flickerplate.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/font.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/join.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/lightslider.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/list.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/search.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/start.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/css/updateMember.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/black-han-sans-v5-latin_korean/black-han-sans-v5-latin_korean-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/black-han-sans-v5-latin_korean/black-han-sans-v5-latin_korean-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/black-han-sans-v5-latin_korean/black-han-sans-v5-latin_korean-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/black-han-sans-v5-latin_korean/black-han-sans-v5-latin_korean-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/black-han-sans-v5-latin_korean/black-han-sans-v5-latin_korean-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-100.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-100.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-100.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-100.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-300.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-300.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-300.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-300.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-500.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-500.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-500.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-500.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-700.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-700.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-700.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-700.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-900.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-900.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-900.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-900.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/fonts/noto-sans-kr-v10-latin_korean/noto-sans-kr-v10-latin_korean-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/bgimg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/bgimg2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/bock.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/logo_finish_2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/logo_nav_finish.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/search_icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/slide00.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/slide01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/images/slide02.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/js/flickerplate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/js/head_foot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/resources/js/lightslider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/main/webapp/start.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/test/java/com/bit/controller/HomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/src/test/resources/log4j.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/controller/MainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/dao/MainDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/db/LoginManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/db/LoginMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/db/MainManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/db/MainMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/db/db-propertise" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/db/sqlMapConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/vo/BadVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/vo/GoodVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/vo/MemberVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/vo/MovieVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/com/min/vo/ZzimVo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/classes/log4j.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/m2e-wtp/web-resources/META-INF/maven/com.bit/controller/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/m2e-wtp/web-resources/META-INF/maven/com.bit/controller/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/test-classes/com/bit/controller/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HYEMINSEO/target/test-classes/log4j.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/cinefox_crawl_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/cinefox_crawl_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/cinefox_rank_crawl.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/cinefox_rank_crawl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/cinefox_resolve_null.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/cinefox_resolve_null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/naver_crawl.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/naver_crawl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/naver_crawl_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/naver_crawl_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/tving_crawl_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/tving_crawl_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/tving_json_crawl.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/tving_json_crawl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faq_eval_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq_eval_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faq_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq_func.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_cnt_graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_cnt_graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_mbr_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_mbr_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_movie_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_movie_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie_dt.csv" beforeDir="false" afterPath="$PROJECT_DIR$/movie_dt.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/board.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/board.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/font.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/font.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/insert.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/insert.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/result.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/result.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/board.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/board.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/board.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/board1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/faqboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/faqboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/insertfaq.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/insertfaq.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/updatefaq.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/updatefaq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +18,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/get_movie_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
+            <state relative-caret-position="1343">
               <caret line="79" selection-start-line="79" selection-end-line="79" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -182,7 +30,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/movie_dt.csv">
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="3179">
               <caret line="187" column="15" selection-start-line="187" selection-start-column="15" selection-end-line="187" selection-end-column="15" />
             </state>
           </provider>
@@ -193,7 +41,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="85">
-                <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+                <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               </first_editor>
               <second_editor />
             </state>
@@ -212,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/result.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
+            <state relative-caret-position="1156">
               <caret line="68" selection-start-line="68" selection-end-line="68" />
               <folding>
                 <element signature="n#style#0;n#i#0;n#li#2;n#ul#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -301,6 +149,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="upload" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -577,11 +430,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.faq_eval_server" />
-        <item itemvalue="Python.get_cnt_graph" />
-        <item itemvalue="Python.cinefox_crawl_func" />
         <item itemvalue="Python.get_movie_list" />
+        <item itemvalue="Python.get_cnt_graph" />
+        <item itemvalue="Python.faq_eval_server" />
         <item itemvalue="Python.cinefox_rank_crawl" />
+        <item itemvalue="Python.cinefox_crawl_func" />
       </list>
     </recent_temporary>
   </component>
@@ -595,13 +448,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1553750986359</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Test">
-      <created>1554707285929</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1554707285929</updated>
     </task>
     <task id="LOCAL-00014" summary="Test">
       <created>1554912321516</created>
@@ -939,14 +785,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557865053149</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Test">
+      <created>1559633643662</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1559633643663</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4958949" visible="true" weight="0.14597094" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4958949" visible="true" weight="0.14597094" />
       <window_info id="Structure" order="1" sideWeight="0.5041051" side_tool="true" weight="0.14195184" />
       <window_info id="Favorites" order="2" sideWeight="0.50396824" side_tool="true" weight="0.13878328" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -958,7 +811,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.29461756" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.13688213" side_tool="true" weight="0.29784366" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.13688213" side_tool="true" visible="true" weight="0.29745042" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32884097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1194,6 +1047,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/get_movie_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/movie_dt.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="3179">
+          <caret line="187" column="15" selection-start-line="187" selection-start-column="15" selection-end-line="187" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/insertfaq.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1203,7 +1073,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
+        <state relative-caret-position="1156">
           <caret line="68" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="n#style#0;n#i#0;n#li#2;n#ul#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1252,28 +1122,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/get_movie_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/movie_dt.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="425">
-          <caret line="187" column="15" selection-start-line="187" selection-start-column="15" selection-end-line="187" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="85">
-            <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           </first_editor>
           <second_editor />
         </state>

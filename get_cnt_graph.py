@@ -2,6 +2,7 @@ from matplotlib import font_manager, rc
 import matplotlib.pyplot as plt
 import cx_Oracle as oc
 import os
+
 def getGraph(no):
     # Oracle Connection
     os.environ["NLS_LANG"] = ".AL32UTF8"
