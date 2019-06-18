@@ -24,3 +24,4 @@ def getInfo(no):
     cursor.close()
     conn.close
     return nickname, cnt_zzim, cnt_good, cnt_bad
+

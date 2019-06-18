@@ -104,7 +104,8 @@ def evalResult():
     list = get_movie_list.getList(int(member_no))
     nickname, cnt_zzim, cnt_good, cnt_bad = get_mbr_info.getInfo(int(member_no))
     get_cnt_graph.getGraph(int(member_no))
-    return render_template('result.html', list=list, list_len=len(list), title=title, member_no=member_no, member_nickname=nickname, cnt_zzim=cnt_zzim, cnt_good=cnt_good, cnt_bad=cnt_bad)
+    return render_template('result.html', list=list, list_len=len(list), title=title, member_no=member_no,
+                           member_nickname=nickname, cnt_zzim=cnt_zzim, cnt_good=cnt_good, cnt_bad=cnt_bad)
 
 if __name__ == '__main__':
     app.run(debug=True, host='192.168.219.186')
