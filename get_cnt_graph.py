@@ -11,13 +11,14 @@ def getGraph(no):
 
     conn = oc.connect('hyeminseo/hyeminseo@localhost:1521/XE')
     cursor = conn.cursor()
-    cursor.execute('select good_date, count(good_date) cnt from good where member_no = ' + str(no) + ' group by good_date order by good_date')
+    cursor.execute("select nvl(to_char(good_date, 'yyyy/mm/dd'), 'sum') good_date, count(*) cnt from good where member_no = 2 group by rollup(to_char(good_date, 'yyyy/mm/dd'))")
 
     date = []
     cnt = []
     for cs in cursor:
-        date.append(cs[0].strftime("%Y/%m/%d"))
-        cnt.append(cs[1])
+        if cs[0] != 'sum':
+            date.append(cs[0])
+            cnt.append(cs[1])
 
     cursor.close()
     conn.close
