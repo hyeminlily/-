@@ -385,7 +385,7 @@ input:-ms-input-placeholder {
 	font-size: 30px;
 	z-index: 4;
 }
-#btn_host {
+.btn_host {
     top: 60%;
     left: 12%;
     padding: 5px;
