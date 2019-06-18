@@ -1,4 +1,3 @@
-
 from matplotlib import font_manager, rc
 import matplotlib.pyplot as plt
 import cx_Oracle as oc
@@ -31,4 +30,3 @@ def getGraph(no):
         plt.plot(date, cnt, color='#68B4AB')
         plt.ylabel('좋아요 횟수', fontsize=16)
         plt.savefig(r'static/images/cnt_graph_' + str(no) + '.jpg', format='jpg')
-

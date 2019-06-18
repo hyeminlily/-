@@ -1,3 +1,4 @@
+
 import pandas as pd
 import cx_Oracle as oc
 import os
@@ -12,8 +13,10 @@ def getTitle(no):
 
     conn = oc.connect('hyeminseo/hyeminseo@localhost:1521/XE')
     cursor = conn.cursor()
-    cursor.execute('select movie_title from movie where movie_no in (select movie_no from (select rownum, movie_no from '
-                   '(select movie_no from good where member_no = ' + str(no) + ' and movie_good > 0 order by good_date desc) where rownum = 1))')
+    cursor.execute('select movie_title from movie where movie_no in'
+                   '(select movie_no from (select rownum, movie_no from '
+                   '(select movie_no from good where member_no = '
+                   + str(no) + 'and movie_good > 0 order by good_date desc) where rownum = 1))')
 
     title = cursor.fetchone()[0]
     cursor.close()
@@ -24,16 +27,13 @@ def getTitle(no):
 def getRecom(title):
     movie = pd.read_csv('movie_dt.csv')
     movie['MOVIE_CONTENT'] = movie['MOVIE_CONTENT'].fillna('')
-    # print(movie['MOVIE_CONTENT'])
 
     # 영화 설명 벡터화
     tf = TfidfVectorizer(analyzer='word', ngram_range=(1,2), min_df=0, stop_words='english')
     tf_matrix = tf.fit_transform(movie['MOVIE_CONTENT'])
-    # print(tf_matrix)
 
     # tf_matrix 간의 유사성 계산
     cos_sim = linear_kernel(tf_matrix, tf_matrix)
-    # print(cos_sim[0])
 
     # 데이터 정제
     movie = movie.reset_index()
@@ -78,3 +78,5 @@ def getList(no):
             return list
     else:
         return list
+
+
