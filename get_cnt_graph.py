@@ -9,7 +9,7 @@ def getGraph(no):
     START_VALUE = u"Unicode \u3042 3".encode('utf-8')
     END_VALUE = u"Unicode \u3042 6".encode('utf-8')
 
-    conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
+    conn = oc.connect('hyeminseo/hyeminseo@localhost:1521/XE')
     cursor = conn.cursor()
     cursor.execute('select good_date, count(good_date) cnt from good where member_no = ' + str(no) + ' group by good_date order by good_date')
 

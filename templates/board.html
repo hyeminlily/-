@@ -28,7 +28,7 @@
                 if (window.sessionStorage) {
                     window.sessionStorage.setItem("member_no", 0);
                 }
-                location.href="http://203.236.209.108:8089/controller/start.jsp";
+                location.href="http://192.168.219.186:8089/controller/start.jsp";
             });
             $(window).scroll(function() {
                 if($(this).scrollTop() > $("#header").height()) {
@@ -55,7 +55,7 @@
             });
 
             // 좋아요 없으면 취향 분석 페이지 아이콘 보이지 않기
-            $.ajax({url: "http://203.236.209.108:8089/controller/goodlist?member_no="+member_no, success: function(data) {
+            $.ajax({url: "http://192.168.219.186:8089/controller/goodlist?member_no="+member_no, success: function(data) {
                 g_arr = eval("("+data+")");
                 if (g_arr.length == 0) {
                     $(".btn_eval").css("display", "none");
@@ -75,26 +75,26 @@
 <body>
     <header>
         <div id="header" class="header">
-            <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_finish_2.svg')}}"></a>
+            <a href="http://192.168.219.186:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_finish_2.svg')}}"></a>
         </div>
         <nav id="navbar" class="navbar">
             <div class="navbar-logo">
-                <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a>
+                <a href="http://192.168.219.186:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a>
             </div>
             <div class="navbar-list">
-                <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;누리-집</a>
-                <a href="http://203.236.209.108:8089/controller/list?member_no={{member_no}}"><i class="material-icons">movie_filter</i>&nbsp;&nbsp;영화-목록</a>
+                <a href="http://192.168.219.186:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;누리-집</a>
+                <a href="http://192.168.219.186:8089/controller/list?member_no={{member_no}}"><i class="material-icons">movie_filter</i>&nbsp;&nbsp;영화-목록</a>
                 <div class="dropdown">
                     <button class="dropbtn">☆{{member_nickname}}☆&nbsp;&nbsp;<i class="fas fa-sort-amount-down" style="font-size: 16px;"></i></button>
                     <div id="dropdown-content" class="dropdown-content">
-                        <a href="http://203.236.209.108:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;정보-고침</a>
+                        <a href="http://192.168.219.186:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;정보-고침</a>
                         <a href="board?member_no={{member_no}}"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;알림-판</a>
-                        <a href="http://203.236.209.108:8089/controller/start.jsp" id="logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;접속-해지</a>
+                        <a href="http://192.168.219.186:8089/controller/start.jsp" id="logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;접속-해지</a>
                     </div>
                 </div>
             </div>
             <div class="searchbar">
-                <form action="http://203.236.209.108:8089/controller/search" method="POST">
+                <form action="http://192.168.219.186:8089/controller/search" method="POST">
                     <input type="text" name="search" placeholder="검색">
                 </form>
             </div>
@@ -102,11 +102,11 @@
         <button class="btn-menu"><i id="icon-menu" class="fas fa-bars"></i></button>
         <div id="sidebar" class="sidebar">
             <i id="icon-close" class="fas fa-times"></i>
-            <a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;누리-집</a>
-            <a href="http://203.236.209.108:8089/controller/list?member_no={{member_no}}"><i class="fas fa-heart"></i>&nbsp;&nbsp;&nbsp;영화-목록</a>
-            <a href="http://203.236.209.108:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;&nbsp;정보-고침</a>
+            <a href="http://192.168.219.186:8089/controller/main?member_no={{member_no}}"><i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;누리-집</a>
+            <a href="http://192.168.219.186:8089/controller/list?member_no={{member_no}}"><i class="fas fa-heart"></i>&nbsp;&nbsp;&nbsp;영화-목록</a>
+            <a href="http://192.168.219.186:8089/controller/updateMember?member_no={{member_no}}"><i class="fas fa-pen"></i>&nbsp;&nbsp;&nbsp;정보-고침</a>
             <a href="board?member_no={{member_no}}"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;알림-판</a>
-            <a href="http://203.236.209.108:8089/controller/start.jsp"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;접속-해지</a>
+            <a href="http://192.168.219.186:8089/controller/start.jsp"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;접속-해지</a>
         </div>
     </header>
 
@@ -216,7 +216,7 @@
     <footer>
         <div id="footer" class="footer">
             <ul class="footer-ul">
-                <li class="footer-li"><a href="http://203.236.209.108:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a></li>
+                <li class="footer-li"><a href="http://192.168.219.186:8089/controller/main?member_no={{member_no}}"><img src="{{url_for('static', filename='img/logo_nav_finish.svg')}}"></a></li>
                 <li class="footer-li">&copy; 철수와 영화 2019</li>
                 <li class="footer-li">慧珉庶 (hyeminseo)</li>
             </ul>

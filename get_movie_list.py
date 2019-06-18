@@ -4,13 +4,13 @@ import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
-# 회원 번호를 매개변수로 가장 최근 좋아요를 누른 3개의 작품명을 반환
+# 회원 번호를 매개변수로 가장 최근 좋아요를 누른 작품명을 반환
 def getTitle(no):
     os.environ["NLS_LANG"] = ".AL32UTF8"
     START_VALUE = u"Unicode \u3042 3".encode('utf-8')
     END_VALUE = u"Unicode \u3042 6".encode('utf-8')
 
-    conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
+    conn = oc.connect('hyeminseo/hyeminseo@localhost:1521/XE')
     cursor = conn.cursor()
     cursor.execute('select movie_title from movie where movie_no in (select movie_no from (select rownum, movie_no from '
                    '(select movie_no from good where member_no = ' + str(no) + ' and movie_good > 0 order by good_date desc) where rownum = 1))')
@@ -49,6 +49,7 @@ def getRecom(title):
     recom_list = list(movie.iloc[movie_idx]['MOVIE_NO'])
     return recom_list
 
+# 추천 영화 10편의 movie_no를 list로 반환
 def getList(no):
     title = getTitle(no)
     list = []
@@ -62,7 +63,7 @@ def getList(no):
                 START_VALUE = u"Unicode \u3042 3".encode('utf-8')
                 END_VALUE = u"Unicode \u3042 6".encode('utf-8')
 
-                conn = oc.connect('hyeminseo/hyeminseo@203.236.209.97:1521/XE')
+                conn = oc.connect('hyeminseo/hyeminseo@localhost:1521/XE')
                 cursor = conn.cursor()
                 cursor.execute('select * from movie where movie_no =' + str(mv) + '')
                 for rs in cursor:
