@@ -1,3 +1,4 @@
+
 import cx_Oracle as oc
 import os
 

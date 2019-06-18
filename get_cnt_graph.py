@@ -1,3 +1,4 @@
+
 from matplotlib import font_manager, rc
 import matplotlib.pyplot as plt
 import cx_Oracle as oc
@@ -11,7 +12,8 @@ def getGraph(no):
 
     conn = oc.connect('hyeminseo/hyeminseo@localhost:1521/XE')
     cursor = conn.cursor()
-    cursor.execute("select nvl(to_char(good_date, 'yyyy/mm/dd'), 'sum') good_date, count(*) cnt from good where member_no = 2 group by rollup(to_char(good_date, 'yyyy/mm/dd'))")
+    cursor.execute("select nvl(to_char(good_date, 'yyyy/mm/dd'), 'sum') good_date, count(*) cnt from good"
+                   "where member_no = 2 group by rollup(to_char(good_date, 'yyyy/mm/dd'))")
 
     date = []
     cnt = []
@@ -29,3 +31,4 @@ def getGraph(no):
         plt.plot(date, cnt, color='#68B4AB')
         plt.ylabel('좋아요 횟수', fontsize=16)
         plt.savefig(r'static/images/cnt_graph_' + str(no) + '.jpg', format='jpg')
+
