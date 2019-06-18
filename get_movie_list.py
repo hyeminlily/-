@@ -20,7 +20,7 @@ def getTitle(no):
     conn.close
     return title
 
-# 영화 content를 기반으로 유사한 영화 10개 추천
+# 영화 content를 기반으로 유사한 영화 12편 추천
 def getRecom(title):
     movie = pd.read_csv('movie_dt.csv')
     movie['MOVIE_CONTENT'] = movie['MOVIE_CONTENT'].fillna('')
@@ -40,7 +40,7 @@ def getRecom(title):
     titles = movie['MOVIE_TITLE']
     idxs = pd.Series(movie.index, index=titles)
 
-    # 영화 제목을 매개변수로 비슷한 영화 10개를 추천해주는 함수
+    # 영화 제목을 매개변수로 비슷한 영화 12편을 추천해주는 함수
     idx = idxs[title]
     sim_scores = list(enumerate(cos_sim[idx]))
     sim_scores = sorted(sim_scores, key=lambda x:x[1], reverse=True)
@@ -49,7 +49,7 @@ def getRecom(title):
     recom_list = list(movie.iloc[movie_idx]['MOVIE_NO'])
     return recom_list
 
-# 추천 영화 10편의 movie_no를 list로 반환
+# 추천 영화 12편의 movie_no를 list로 반환
 def getList(no):
     title = getTitle(no)
     list = []
