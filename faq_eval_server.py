@@ -103,7 +103,7 @@ def deletefaq():
     orgin_id = request.args.get('id', '')
     new_id = ObjectId(orgin_id)
     faq_func.deleteFaq(new_id)
-    list = faq_func.getList()
+    list = faq_func.getFaq()
     return render_template('faqboard.html', list=list)
 
 if __name__ == '__main__':
